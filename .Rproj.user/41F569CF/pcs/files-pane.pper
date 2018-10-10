@@ -1,0 +1,9 @@
+{
+    "path" : "~/expodb/foodb",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

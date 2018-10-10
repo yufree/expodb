@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<T3DB>
+<compound>
+  <version>1.5</version>
+  <creation_date>2009-06-18 17:03:34 UTC</creation_date>
+  <update_date>2014-12-24 20:23:03 UTC</update_date>
+  <accession>T3D1026</accession>
+  <common_name>Phenothrin</common_name>
+  <class>SmallMolecule</class>
+  <description>Phenothrin, also called sumithrin, is a synthetic pyrethroid  (type 1) that kills adult fleas and ticks. It has also been used to kill head lice in humans. d-phenothrin is used as a component of aerosol insecticides for domestic use. Phenothrin is often used with methoprene, an insect growth regulator that interrupts the insect's biological life cycle by killing the eggs. In 2005, the EPA required Hartz Mountain Industries to cancel uses of several flea and tick products containing phenothrin that were linked to a range of adverse reactions, including hair loss, salivation, tremors, and numerous deaths in cats and kittens. In the short term, the agreement called for new warning labels on the products. A pyrethroid is a synthetic chemical compound similar to the natural chemical pyrethrins produced by the flowers of pyrethrums (Chrysanthemum cinerariaefolium and C. coccineum). Pyrethroids are common in commercial products such as household insecticides and insect repellents. In the concentrations used in such products, they are generally harmless to human beings but can harm sensitive individuals. They are usually broken apart by sunlight and the atmosphere in one or two days, and do not significantly affect groundwater quality except for being toxic to fish. (L811, L865)</description>
+  <categories>
+    <category>Pesticide</category>
+    <category>Household Toxin</category>
+    <category>Synthetic Toxin</category>
+  </categories>
+  <types>
+    <type>Organic Compound</type>
+    <type>Pesticide</type>
+    <type>Ether</type>
+    <type>Pyrethroid</type>
+    <type>Ester</type>
+    <type>Household Toxin</type>
+    <type>Synthetic Compound</type>
+  </types>
+  <synonyms>
+    <synonym>(+)-Cis-fenothrin</synonym>
+    <synonym>(+/-)-phenoxybenzyl-cis,trans-chrysanthemate</synonym>
+    <synonym>(-)-Trans-phenothrin</synonym>
+    <synonym>2,2-Dimethyl-3-(2-methyl-1-propenyl)cyclopropanecarboxylic acid (3-phenoxyphenyl)methyl ester</synonym>
+    <synonym>3-Phenoxybenzyl (+-)-cis-trans-chrysanthemate</synonym>
+    <synonym>3-Phenoxybenzyl (1RS)-cis,trans-chrysanthemate</synonym>
+    <synonym>3-Phenoxybenzyl chrysanthemate</synonym>
+    <synonym>3-Phenoxybenzyl D-Z/E chrysanthemate</synonym>
+    <synonym>Anchimanaito 20S</synonym>
+    <synonym>Anvil</synonym>
+    <synonym>Caswell No. 652B</synonym>
+    <synonym>D-phenothrin</synonym>
+    <synonym>D-phenthrin (trans)</synonym>
+    <synonym>Delta-(cis-trans)-phenothrin</synonym>
+    <synonym>Fenothrin</synonym>
+    <synonym>Forte</synonym>
+    <synonym>Multicide 2154</synonym>
+    <synonym>Multicide Concentrate F-2271</synonym>
+    <synonym>phenothrin, (1R-cis)-isomer</synonym>
+    <synonym>phenothrin, (1R-trans)-isomer</synonym>
+    <synonym>phenothrin, (1S-cis)-isomer</synonym>
+    <synonym>phenothrin, (1S-trans)-isomer</synonym>
+    <synonym>Phenothrin, (cis-(+-))-isomer</synonym>
+    <synonym>Phenothrin, (trans-(+-))-isomer</synonym>
+    <synonym>Phenothrine</synonym>
+    <synonym>Phenoxybenzyl (1R)-cis/trans chrysanthemate</synonym>
+    <synonym>Phenoxybenzyl chrysanthemate</synonym>
+    <synonym>Phenoxybenzyl-d-z/e-chrysanthemate</synonym>
+    <synonym>Phenoxythrin</synonym>
+    <synonym>Phonothrin</synonym>
+    <synonym>Pibutin</synonym>
+    <synonym>S 2539 (pesticide)</synonym>
+    <synonym>Sumithrin</synonym>
+    <synonym>Sumitrin</synonym>
+    <synonym>Wellcide</synonym>
+  </synonyms>
+  <chemical_formula>C23H26O3</chemical_formula>
+  <average_molecular_weight>350.4507</average_molecular_weight>
+  <monisotopic_moleculate_weight>350.188194698</monisotopic_moleculate_weight>
+  <iupac_name>(3-phenoxyphenyl)methyl 2,2-dimethyl-3-(2-methylprop-1-en-1-yl)cyclopropane-1-carboxylate</iupac_name>
+  <traditional_iupac>phenothrin</traditional_iupac>
+  <cas_registry_number>26002-80-2</cas_registry_number>
+  <smiles>CC(C)=CC1C(C(=O)OCC2=CC=CC(OC3=CC=CC=C3)=C2)C1(C)C</smiles>
+  <inchi>InChI=1S/C23H26O3/c1-16(2)13-20-21(23(20,3)4)22(24)25-15-17-9-8-12-19(14-17)26-18-10-6-5-7-11-18/h5-14,20-21H,15H2,1-4H3</inchi>
+  <inchikey>InChIKey=SBNFWQZLDJGRLK-UHFFFAOYSA-N</inchikey>
+  <taxonomy>
+    <kingdom>Chemical entities</kingdom>
+    <super_class>Organic compounds</super_class>
+    <class>Lipids and lipid-like molecules</class>
+    <sub_class>Fatty Acyls</sub_class>
+    <direct_parent>Pyrethroids</direct_parent>
+    <alternate_parents>
+      <alternative_parent>Aromatic monoterpenoids</alternative_parent>
+      <alternative_parent>Benzyloxycarbonyls</alternative_parent>
+      <alternative_parent>Carbonyl compounds</alternative_parent>
+      <alternative_parent>Carboxylic acid esters</alternative_parent>
+      <alternative_parent>Cyclopropanecarboxylic acids and derivatives</alternative_parent>
+      <alternative_parent>Diarylethers</alternative_parent>
+      <alternative_parent>Diphenylethers</alternative_parent>
+      <alternative_parent>Hydrocarbon derivatives</alternative_parent>
+      <alternative_parent>Monocarboxylic acids and derivatives</alternative_parent>
+      <alternative_parent>Monocyclic monoterpenoids</alternative_parent>
+      <alternative_parent>Organic oxides</alternative_parent>
+      <alternative_parent>Phenol ethers</alternative_parent>
+      <alternative_parent>Phenoxy compounds</alternative_parent>
+    </alternate_parents>
+    <substituents>
+      <substituent>Aromatic homomonocyclic compound</substituent>
+      <substituent>Aromatic monoterpenoid</substituent>
+      <substituent>Benzenoid</substituent>
+      <substituent>Benzyloxycarbonyl</substituent>
+      <substituent>Carbonyl group</substituent>
+      <substituent>Carboxylic acid derivative</substituent>
+      <substituent>Carboxylic acid ester</substituent>
+      <substituent>Cyclopropanecarboxylic acid or derivatives</substituent>
+      <substituent>Diaryl ether</substituent>
+      <substituent>Diphenylether</substituent>
+      <substituent>Ether</substituent>
+      <substituent>Hydrocarbon derivative</substituent>
+      <substituent>Monocarboxylic acid or derivatives</substituent>
+      <substituent>Monocyclic benzene moiety</substituent>
+      <substituent>Monocyclic monoterpenoid</substituent>
+      <substituent>Monoterpenoid</substituent>
+      <substituent>Organic oxide</substituent>
+      <substituent>Organic oxygen compound</substituent>
+      <substituent>Organooxygen compound</substituent>
+      <substituent>Phenol ether</substituent>
+      <substituent>Phenoxy compound</substituent>
+      <substituent>Pyrethroid skeleton</substituent>
+    </substituents>
+    <molecular_framework>Aromatic homomonocyclic compounds</molecular_framework>
+    <descriptors>
+      <descriptor>Pyrethroid insecticides</descriptor>
+      <descriptor>cyclopropanes</descriptor>
+    </descriptors>
+  </taxonomy>
+  <status>Detected and Not Quantified</status>
+  <origin>Exogenous</origin>
+  <cellular_locations>
+    <cellular_location>Membrane</cellular_location>
+  </cellular_locations>
+  <biofluid_locations>
+  </biofluid_locations>
+  <tissue_locations>
+  </tissue_locations>
+  <pathways>
+  </pathways>
+  <state>Liquid</state>
+  <appearance>Yellow to yellow-brown liquid (L866).</appearance>
+  <experimental_properties>
+    <property>
+      <kind>melting_point</kind>
+      <value>&lt; 25°C</value>
+    </property>
+    <property>
+      <kind>boiling_point</kind>
+      <value>&gt;290°C</value>
+    </property>
+    <property>
+      <kind>solubility</kind>
+      <value>9.7e-06 mg/mL at 25°C [TOMLIN,C (1997); &lt;9.7 ug/L]</value>
+    </property>
+  </experimental_properties>
+  <predicted_properties>
+    <property>
+      <kind>logp</kind>
+      <value>6.42</value>
+      <source>ALOGPS</source>
+    </property>
+    <property>
+      <kind>logs</kind>
+      <value>-5.24</value>
+      <source>ALOGPS</source>
+    </property>
+    <property>
+      <kind>solubility</kind>
+      <value>2.01e-03 g/l</value>
+      <source>ALOGPS</source>
+    </property>
+    <property>
+      <kind>logp</kind>
+      <value>5.57</value>
+      <source>ChemAxon</source>
+    </property>
+    <property>
+      <kind>pka_strongest_basic</kind>
+      <value>-7.1</value>
+      <source>ChemAxon</source>
+    </property>
+    <property>
+      <kind>iupac</kind>
+      <value>(3-phenoxyphenyl)methyl 2,2-dimethyl-3-(2-methylprop-1-en-1-yl)cyclopropane-1-carboxylate</value>
+      <source>ChemAxon</source>
+    </property>
+    <property>
+      <kind>average_mass</kind>
+      <value>350.4507</value>
+      <source>ChemAxon</source>
+    </property>
+    <property>
+      <kind>mono_mass</kind>
+      <value>350.188194698</value>
+      <source>ChemAxon</source>
+    </property>
+    <property>
+      <kind>smiles</kind>
+      <value>CC(C)=CC1C(C(=O)OCC2=CC=CC(OC3=CC=CC=C3)=C2)C1(C)C</value>
+      <source>ChemAxon</source>
+    </property>
+    <property>
+      <kind>formula</kind>
+      <value>C23H26O3</value>
+      <source>ChemAxon</source>
+    </property>
+    <property>
+      <kind>inchi</kind>
+      <value>InChI=1S/C23H26O3/c1-16(2)13-20-21(23(20,3)4)22(24)25-15-17-9-8-12-19(14-17)26-18-10-6-5-7-11-18/h5-14,20-21H,15H2,1-4H3</value>
+      <source>ChemAxon</source>
+    </property>
+    <property>
+      <kind>inchikey</kind>
+      <value>InChIKey=SBNFWQZLDJGRLK-UHFFFAOYSA-N</value>
+      <source>ChemAxon</source>
+    </property>
+    <property>
+      <kind>polar_surface_area</kind>
+      <value>35.53</value>
+      <source>ChemAxon</source>
+    </property>
+    <property>
+      <kind>refractivity</kind>
+      <value>103.84</value>
+      <source>ChemAxon</source>
+    </property>
+    <property>
+      <kind>polarizability</kind>
+      <value>39.83</value>
+      <source>ChemAxon</source>
+    </property>
+    <property>
+      <kind>rotatable_bond_count</kind>
+      <value>7</value>
+      <source>ChemAxon</source>
+    </property>
+    <property>
+      <kind>acceptor_count</kind>
+      <value>1</value>
+      <source>ChemAxon</source>
+    </property>
+    <property>
+      <kind>donor_count</kind>
+      <value>0</value>
+      <source>ChemAxon</source>
+    </property>
+    <property>
+      <kind>physiological_charge</kind>
+      <value>0</value>
+      <source>ChemAxon</source>
+    </property>
+    <property>
+      <kind>formal_charge</kind>
+      <value>0</value>
+      <source>ChemAxon</source>
+    </property>
+  </predicted_properties>
+  <spectra>
+    <spectrum>
+      <type>Specdb::EiMs</type>
+      <spectrum_id>93</spectrum_id>
+    </spectrum>
+    <spectrum>
+      <type>Specdb::MsMs</type>
+      <spectrum_id>73755</spectrum_id>
+    </spectrum>
+    <spectrum>
+      <type>Specdb::MsMs</type>
+      <spectrum_id>73756</spectrum_id>
+    </spectrum>
+    <spectrum>
+      <type>Specdb::MsMs</type>
+      <spectrum_id>73757</spectrum_id>
+    </spectrum>
+    <spectrum>
+      <type>Specdb::MsMs</type>
+      <spectrum_id>132990</spectrum_id>
+    </spectrum>
+    <spectrum>
+      <type>Specdb::MsMs</type>
+      <spectrum_id>132991</spectrum_id>
+    </spectrum>
+    <spectrum>
+      <type>Specdb::MsMs</type>
+      <spectrum_id>132992</spectrum_id>
+    </spectrum>
+  </spectra>
+  <route_of_exposure>Inhalation (L857); oral (L857); dermal (L857) ; eye contact (L857).</route_of_exposure>
+  <mechanism_of_toxicity>Both type I and type II pyrethroids exert their effect by prolonging the open phase of the sodium channel gates when a nerve cell is excited. They appear to bind to the membrane lipid phase in the immediate vicinity of the sodium channel, thus modifying the channel kinetics. This blocks the closing of the sodium gates in the nerves, and thus prolongs the return of the membrane potential to its resting state. The repetitive (sensory, motor) neuronal discharge and a prolonged negative afterpotential produces effects quite similar to those produced by DDT, leading to hyperactivity of the nervous system which can result in paralysis and/or death. Other mechanisms of action of pyrethroids include antagonism of gamma-aminobutyric acid (GABA)-mediated inhibition, modulation of nicotinic cholinergic transmission, enhancement of noradrenaline release, and actions on calcium ions. They also inhibit calium channels and Ca2+, Mg2+-ATPase. (T10, T18, L857)</mechanism_of_toxicity>
+  <metabolism>d-Phenothrin is a fast acting  insecticide, effective by contact and stomach action. It is rapidly metabolized and excreted by humans and has low human toxicity.  For both cis- and trans- isomers, the product was metabolized by hydrolysis, oxidation and conjugation and a large part of d-Phenothrin is excreted unchanged in the urine and the faeces.   Following oral administration of the (1R)- trans - isomer, the urine is the major excretory route.  The isomer is extensively metabolized to oxidative and conjugated derivatives of the hydrolysed ester.  Oxidative and conjugated derivatives of the
+(1R)- cis -isomer are also observed but hydrolysis of the ester linkage is a minor metabolic pathway.  With this isomer the faeces is the major excretory route. The metabolic profiles aree similar following dermal application, although the rates of excretion for each isomer showed some differences between the two routes of administration.  The major metabolite is 3-phenoxybenzyl alcohol (PBalc). Smaller amounts of PBacid and trace amounts of 4'-OH-PBacid are also found.  It is stable to storage in the dark; d-Phenothrin is relatively unstable to sunlight or ultra violet irradiation, or in alkaline media. (L866, A561)</metabolism>
+  <toxicity>LD50: &gt; 5000 mg/kg (Oral, Rat) (A561)
+LD50: 10 000 mg/kg  (Dermal, Rat) (A561)</toxicity>
+  <lethaldose/>
+  <carcinogenicity>No indication of carcinogenicity to humans (not listed by IARC).</carcinogenicity>
+  <use_source>Pyrethroids are used as insecticides. (L857)</use_source>
+  <min_risk_level/>
+  <health_effects>Pyrethroid effects typically include rapid onset of aggressive behavior and increased sensitivity to external stimuli, followed by fine tremor, prostration with coarse whole body tremor, elevated body temperature, coma, and death. Paresthesia, severe corneal damage, hypotension and tachycardia, associated with anaphylaxis, can also occur following pyrethriod poisoning. (L857)</health_effects>
+  <symptoms>Following oral exposure, severe fine tremor, marked reflex hyperexcitability, sympathetic activation can occur.  Nausea, vomiting and abdominal pain commonly occur and develop following ingestion. Sudden bronchospasm, swelling of oral and laryngeal mucous membranes, and anaphylactoid reactions have been reported after inhalation. Hypersensitivity reactions characterized by pneumonitis, cough, dyspnea, wheezing, chest pain, and bronchospasm may occur too . Dermatitis is the main effect of a dermal exposure to phenothrin. (T36)</symptoms>
+  <treatment>Following oral exposure, the treatment is symptomatic and supportive and includes monitoring for the development of hypersensitivity reactions with respiratory distress. Provide adequate airway management when needed. Gastric decontamination is usually not required unless the pyrethrin product is combined with a hydrocarbon. Following inhalation exposure, move patient to fresh air. monitor for respiratory distress. If cough or difficulty breathing develops, evaluate for respiratory tract irritation, bronchitis, or pneumonitis. Administer oxygen and assist ventilation as required. Treat bronchospasm with inhaled beta2 agonist and oral or parenteral corticosteroids. In case of eye exposure, irrigate exposed eyes with copious amounts of room temperature water for at least 15 minutes. If irritation, pain, swelling, lacrimation, or photophobia persist, the patient should be seen in a health care facility. If the contamination occurs through dermal exposure, Remove contaminated clothing and wash exposed area thoroughly with soap and water. A physician may need to examine the area if irritation or pain persists. Vitamin E topical application is highly effective in relieving parenthesis. (L363)</treatment>
+  <drugbank_id/>
+  <hmdb_id/>
+  <pubchem_compound_id>4767</pubchem_compound_id>
+  <chembl_id>CHEMBL1322884</chembl_id>
+  <chemspider_id>4603</chemspider_id>
+  <kegg_id>C14387</kegg_id>
+  <uniprot_id/>
+  <omim_id></omim_id>
+  <chebi_id>34916</chebi_id>
+  <biocyc_id></biocyc_id>
+  <ctd_id>C006166</ctd_id>
+  <stitch_id>Phenothrin</stitch_id>
+  <actor_id>13208</actor_id>
+  <pdb_id/>
+  <wikipidia/>
+  <general_references>
+    <reference>
+      <reference_text>Brody SA, Loriaux DL: Epidemic of gynecomastia among haitian refugees: exposure to an environmental antiandrogen. Endocr Pract. 2003 Sep-Oct;9(5):370-5.</reference_text>
+      <pubmed_id>14583418</pubmed_id>
+    </reference>
+    <reference>
+      <reference_text>Scollon EJ, Starr JM, Godin SJ, DeVito MJ, Hughes MF: In vitro metabolism of pyrethroid pesticides by rat and human hepatic microsomes and cytochrome p450 isoforms. Drug Metab Dispos. 2009 Jan;37(1):221-8. doi: 10.1124/dmd.108.022343. Epub 2008 Oct 23.</reference_text>
+      <pubmed_id>18948380</pubmed_id>
+    </reference>
+    <reference>
+      <reference_text>Leng G, Lewalter J, Rohrig B, Idel H: The influence of individual susceptibility in pyrethroid exposure. Toxicol Lett. 1999 Jun 30;107(1-3):123-30.</reference_text>
+      <pubmed_id>10414789</pubmed_id>
+    </reference>
+    <reference>
+      <reference_text>Suruga K, Kitagawa M, Yasutake H, Takase S, Goda T: Diet-related variation in cellular retinol-binding protein type II gene expression in rat jejunum. Br J Nutr. 2005 Dec;94(6):890-5.</reference_text>
+      <pubmed_id>16351764</pubmed_id>
+    </reference>
+    <reference>
+      <reference_text>Casarett LJ, Klaassen CD, and Watkins JB (2003). Casarett and Doull's essentials of toxicology. New York: McGraw-Hill/Medical Pub. Div.</reference_text>
+    </reference>
+    <reference>
+      <reference_text>Hayes WJ Jr. and Laws ER Jr. (eds) (1991). Handbook of Pesticide Toxicology. Volume 3. Classes of Pesticides. New York, NY: Academic Press, Inc.</reference_text>
+    </reference>
+    <reference>
+      <reference_text>Rumack BH (2009). POISINDEX(R) Information System. Englewood, CO: Micromedex, Inc. CCIS Volume 141, edition expires Aug, 2009.</reference_text>
+    </reference>
+    <reference>
+      <reference_text>WHO (1990). Environmental Health Criteria 96: Phenothrin.</reference_text>
+    </reference>
+    <reference>
+      <reference_text>Wikipedia. Blister agent. Last Updated 24 May 2009. : http://en.wikipedia.org/wiki/Vesicant</reference_text>
+    </reference>
+    <reference>
+      <reference_text>Wikipedia. Pyrethroid. Last Updated 8 June 2009. : http://en.wikipedia.org/wiki/Pyrethroid</reference_text>
+    </reference>
+    <reference>
+      <reference_text>ATSDR - Agency for Toxic Substances and Disease Registry (2003). Toxicological profile for pyrethrins and pyrethroids. U.S. Public Health Service in collaboration with U.S. Environmental Protection Agency (EPA). : http://www.atsdr.cdc.gov/toxprofiles/tp155.html</reference_text>
+    </reference>
+    <reference>
+      <reference_text>Wikipedia. Phenothrin. Last Updated 1 August 2009.: http://en.wikipedia.org/wiki/Phenothrin</reference_text>
+    </reference>
+    <reference>
+      <reference_text>International Programme on Chemical Safety (IPCS) INCHEM (1994). Pesticide Document for D-phenothrin. : http://www.inchem.org/documents/pds/pds/pest85_e.htm</reference_text>
+    </reference>
+  </general_references>
+  <targets>
+    <target>
+      <target_id>BE0000141</target_id>
+      <name>Sodium channel protein type 1 subunit alpha</name>
+      <uniprot_id>P35498</uniprot_id>
+      <mechanism_of_action>This pyrethroid exerts its profound effect by prolonging the open phase of the sodium channel gates when a nerve cell is excited. This pyrethroid is a axonic poison that block the closing of the sodium gates in the nerves, and, thus, prolongs the return of the membrane potential to its resting state leading to hyperactivity of the nervous system which can result in paralysis and/or death. Type I Pyrethroid esters (lacking the alpha-cyano substituents) affect sodium channels in nerve membranes, causing repetitive (sensory, motor) neuronal discharge and a prolonged negative afterpotential, the effects being quite similar to those produced by DDT (L857, A560).</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Everts HB, Sundberg JP, Ong DE: Immunolocalization of retinoic acid biosynthesis systems in selected sites in rat. Exp Cell Res. 2005 Aug 15;308(2):309-19.</reference_text>
+          <pubmed_id>15950969</pubmed_id>
+        </reference>
+        <reference>
+          <reference_text>Klaassen CD, Amdur MO, Doull J (eds) (1995). Casarett and Doull's Toxicology. The Basic Science of Poisons. 5th ed. New York, NY: McGraw-Hill.</reference_text>
+          <pubmed_id/>
+        </reference>
+        <reference>
+          <reference_text>ATSDR - Agency for Toxic Substances and Disease Registry (2003). Toxicological profile for pyrethrins and pyrethroids. U.S. Public Health Service in collaboration with U.S. Environmental Protection Agency (EPA). : http://www.atsdr.cdc.gov/toxprofiles/tp155.html</reference_text>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0000177</target_id>
+      <name>Sodium channel protein type 10 subunit alpha</name>
+      <uniprot_id>Q9Y5Y9</uniprot_id>
+      <mechanism_of_action>This pyrethroid exerts its profound effect by prolonging the open phase of the sodium channel gates when a nerve cell is excited. This pyrethroid is a axonic poison that block the closing of the sodium gates in the nerves, and, thus, prolongs the return of the membrane potential to its resting state leading to hyperactivity of the nervous system which can result in paralysis and/or death. Type I Pyrethroid esters (lacking the alpha-cyano substituents) affect sodium channels in nerve membranes, causing repetitive (sensory, motor) neuronal discharge and a prolonged negative afterpotential, the effects being quite similar to those produced by DDT (L857, A560).</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Everts HB, Sundberg JP, Ong DE: Immunolocalization of retinoic acid biosynthesis systems in selected sites in rat. Exp Cell Res. 2005 Aug 15;308(2):309-19.</reference_text>
+          <pubmed_id>15950969</pubmed_id>
+        </reference>
+        <reference>
+          <reference_text>Klaassen CD, Amdur MO, Doull J (eds) (1995). Casarett and Doull's Toxicology. The Basic Science of Poisons. 5th ed. New York, NY: McGraw-Hill.</reference_text>
+          <pubmed_id/>
+        </reference>
+        <reference>
+          <reference_text>ATSDR - Agency for Toxic Substances and Disease Registry (2003). Toxicological profile for pyrethrins and pyrethroids. U.S. Public Health Service in collaboration with U.S. Environmental Protection Agency (EPA). : http://www.atsdr.cdc.gov/toxprofiles/tp155.html</reference_text>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0000192</target_id>
+      <name>Sodium channel protein type 11 subunit alpha</name>
+      <uniprot_id>Q9UI33</uniprot_id>
+      <mechanism_of_action>This pyrethroid exerts its profound effect by prolonging the open phase of the sodium channel gates when a nerve cell is excited. This pyrethroid is a axonic poison that block the closing of the sodium gates in the nerves, and, thus, prolongs the return of the membrane potential to its resting state leading to hyperactivity of the nervous system which can result in paralysis and/or death. Type I Pyrethroid esters (lacking the alpha-cyano substituents) affect sodium channels in nerve membranes, causing repetitive (sensory, motor) neuronal discharge and a prolonged negative afterpotential, the effects being quite similar to those produced by DDT (L857, A560).</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Everts HB, Sundberg JP, Ong DE: Immunolocalization of retinoic acid biosynthesis systems in selected sites in rat. Exp Cell Res. 2005 Aug 15;308(2):309-19.</reference_text>
+          <pubmed_id>15950969</pubmed_id>
+        </reference>
+        <reference>
+          <reference_text>Klaassen CD, Amdur MO, Doull J (eds) (1995). Casarett and Doull's Toxicology. The Basic Science of Poisons. 5th ed. New York, NY: McGraw-Hill.</reference_text>
+          <pubmed_id/>
+        </reference>
+        <reference>
+          <reference_text>ATSDR - Agency for Toxic Substances and Disease Registry (2003). Toxicological profile for pyrethrins and pyrethroids. U.S. Public Health Service in collaboration with U.S. Environmental Protection Agency (EPA). : http://www.atsdr.cdc.gov/toxprofiles/tp155.html</reference_text>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0002081</target_id>
+      <name>Sodium channel protein type 2 subunit alpha</name>
+      <uniprot_id>Q99250</uniprot_id>
+      <mechanism_of_action>This pyrethroid exerts its profound effect by prolonging the open phase of the sodium channel gates when a nerve cell is excited. This pyrethroid is a axonic poison that block the closing of the sodium gates in the nerves, and, thus, prolongs the return of the membrane potential to its resting state leading to hyperactivity of the nervous system which can result in paralysis and/or death. Type I Pyrethroid esters (lacking the alpha-cyano substituents) affect sodium channels in nerve membranes, causing repetitive (sensory, motor) neuronal discharge and a prolonged negative afterpotential, the effects being quite similar to those produced by DDT (L857, A560).</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Everts HB, Sundberg JP, Ong DE: Immunolocalization of retinoic acid biosynthesis systems in selected sites in rat. Exp Cell Res. 2005 Aug 15;308(2):309-19.</reference_text>
+          <pubmed_id>15950969</pubmed_id>
+        </reference>
+        <reference>
+          <reference_text>Klaassen CD, Amdur MO, Doull J (eds) (1995). Casarett and Doull's Toxicology. The Basic Science of Poisons. 5th ed. New York, NY: McGraw-Hill.</reference_text>
+          <pubmed_id/>
+        </reference>
+        <reference>
+          <reference_text>ATSDR - Agency for Toxic Substances and Disease Registry (2003). Toxicological profile for pyrethrins and pyrethroids. U.S. Public Health Service in collaboration with U.S. Environmental Protection Agency (EPA). : http://www.atsdr.cdc.gov/toxprofiles/tp155.html</reference_text>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0002082</target_id>
+      <name>Sodium channel protein type 3 subunit alpha</name>
+      <uniprot_id>Q9NY46</uniprot_id>
+      <mechanism_of_action>This pyrethroid exerts its profound effect by prolonging the open phase of the sodium channel gates when a nerve cell is excited. This pyrethroid is a axonic poison that block the closing of the sodium gates in the nerves, and, thus, prolongs the return of the membrane potential to its resting state leading to hyperactivity of the nervous system which can result in paralysis and/or death. Type I Pyrethroid esters (lacking the alpha-cyano substituents) affect sodium channels in nerve membranes, causing repetitive (sensory, motor) neuronal discharge and a prolonged negative afterpotential, the effects being quite similar to those produced by DDT (L857, A560).</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Everts HB, Sundberg JP, Ong DE: Immunolocalization of retinoic acid biosynthesis systems in selected sites in rat. Exp Cell Res. 2005 Aug 15;308(2):309-19.</reference_text>
+          <pubmed_id>15950969</pubmed_id>
+        </reference>
+        <reference>
+          <reference_text>Klaassen CD, Amdur MO, Doull J (eds) (1995). Casarett and Doull's Toxicology. The Basic Science of Poisons. 5th ed. New York, NY: McGraw-Hill.</reference_text>
+          <pubmed_id/>
+        </reference>
+        <reference>
+          <reference_text>ATSDR - Agency for Toxic Substances and Disease Registry (2003). Toxicological profile for pyrethrins and pyrethroids. U.S. Public Health Service in collaboration with U.S. Environmental Protection Agency (EPA). : http://www.atsdr.cdc.gov/toxprofiles/tp155.html</reference_text>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0002083</target_id>
+      <name>Sodium channel protein type 4 subunit alpha</name>
+      <uniprot_id>P35499</uniprot_id>
+      <mechanism_of_action>This pyrethroid exerts its profound effect by prolonging the open phase of the sodium channel gates when a nerve cell is excited. This pyrethroid is a axonic poison that block the closing of the sodium gates in the nerves, and, thus, prolongs the return of the membrane potential to its resting state leading to hyperactivity of the nervous system which can result in paralysis and/or death. Type I Pyrethroid esters (lacking the alpha-cyano substituents) affect sodium channels in nerve membranes, causing repetitive (sensory, motor) neuronal discharge and a prolonged negative afterpotential, the effects being quite similar to those produced by DDT (L857, A560).</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Everts HB, Sundberg JP, Ong DE: Immunolocalization of retinoic acid biosynthesis systems in selected sites in rat. Exp Cell Res. 2005 Aug 15;308(2):309-19.</reference_text>
+          <pubmed_id>15950969</pubmed_id>
+        </reference>
+        <reference>
+          <reference_text>Klaassen CD, Amdur MO, Doull J (eds) (1995). Casarett and Doull's Toxicology. The Basic Science of Poisons. 5th ed. New York, NY: McGraw-Hill.</reference_text>
+          <pubmed_id/>
+        </reference>
+        <reference>
+          <reference_text>ATSDR - Agency for Toxic Substances and Disease Registry (2003). Toxicological profile for pyrethrins and pyrethroids. U.S. Public Health Service in collaboration with U.S. Environmental Protection Agency (EPA). : http://www.atsdr.cdc.gov/toxprofiles/tp155.html</reference_text>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0000197</target_id>
+      <name>Sodium channel protein type 5 subunit alpha</name>
+      <uniprot_id>Q14524</uniprot_id>
+      <mechanism_of_action>This pyrethroid exerts its profound effect by prolonging the open phase of the sodium channel gates when a nerve cell is excited. This pyrethroid is a axonic poison that block the closing of the sodium gates in the nerves, and, thus, prolongs the return of the membrane potential to its resting state leading to hyperactivity of the nervous system which can result in paralysis and/or death. Type I Pyrethroid esters (lacking the alpha-cyano substituents) affect sodium channels in nerve membranes, causing repetitive (sensory, motor) neuronal discharge and a prolonged negative afterpotential, the effects being quite similar to those produced by DDT (L857, A560).</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Everts HB, Sundberg JP, Ong DE: Immunolocalization of retinoic acid biosynthesis systems in selected sites in rat. Exp Cell Res. 2005 Aug 15;308(2):309-19.</reference_text>
+          <pubmed_id>15950969</pubmed_id>
+        </reference>
+        <reference>
+          <reference_text>Klaassen CD, Amdur MO, Doull J (eds) (1995). Casarett and Doull's Toxicology. The Basic Science of Poisons. 5th ed. New York, NY: McGraw-Hill.</reference_text>
+          <pubmed_id/>
+        </reference>
+        <reference>
+          <reference_text>ATSDR - Agency for Toxic Substances and Disease Registry (2003). Toxicological profile for pyrethrins and pyrethroids. U.S. Public Health Service in collaboration with U.S. Environmental Protection Agency (EPA). : http://www.atsdr.cdc.gov/toxprofiles/tp155.html</reference_text>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0004900</target_id>
+      <name>Sodium channel protein type 7 subunit alpha</name>
+      <uniprot_id>Q01118</uniprot_id>
+      <mechanism_of_action>This pyrethroid exerts its profound effect by prolonging the open phase of the sodium channel gates when a nerve cell is excited. This pyrethroid is a axonic poison that block the closing of the sodium gates in the nerves, and, thus, prolongs the return of the membrane potential to its resting state leading to hyperactivity of the nervous system which can result in paralysis and/or death. Type I Pyrethroid esters (lacking the alpha-cyano substituents) affect sodium channels in nerve membranes, causing repetitive (sensory, motor) neuronal discharge and a prolonged negative afterpotential, the effects being quite similar to those produced by DDT (L857, A560).</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Everts HB, Sundberg JP, Ong DE: Immunolocalization of retinoic acid biosynthesis systems in selected sites in rat. Exp Cell Res. 2005 Aug 15;308(2):309-19.</reference_text>
+          <pubmed_id>15950969</pubmed_id>
+        </reference>
+        <reference>
+          <reference_text>Klaassen CD, Amdur MO, Doull J (eds) (1995). Casarett and Doull's Toxicology. The Basic Science of Poisons. 5th ed. New York, NY: McGraw-Hill.</reference_text>
+          <pubmed_id/>
+        </reference>
+        <reference>
+          <reference_text>ATSDR - Agency for Toxic Substances and Disease Registry (2003). Toxicological profile for pyrethrins and pyrethroids. U.S. Public Health Service in collaboration with U.S. Environmental Protection Agency (EPA). : http://www.atsdr.cdc.gov/toxprofiles/tp155.html</reference_text>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0002084</target_id>
+      <name>Sodium channel protein type 8 subunit alpha</name>
+      <uniprot_id>Q9UQD0</uniprot_id>
+      <mechanism_of_action>This pyrethroid exerts its profound effect by prolonging the open phase of the sodium channel gates when a nerve cell is excited. This pyrethroid is a axonic poison that block the closing of the sodium gates in the nerves, and, thus, prolongs the return of the membrane potential to its resting state leading to hyperactivity of the nervous system which can result in paralysis and/or death. Type I Pyrethroid esters (lacking the alpha-cyano substituents) affect sodium channels in nerve membranes, causing repetitive (sensory, motor) neuronal discharge and a prolonged negative afterpotential, the effects being quite similar to those produced by DDT (L857, A560).</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Everts HB, Sundberg JP, Ong DE: Immunolocalization of retinoic acid biosynthesis systems in selected sites in rat. Exp Cell Res. 2005 Aug 15;308(2):309-19.</reference_text>
+          <pubmed_id>15950969</pubmed_id>
+        </reference>
+        <reference>
+          <reference_text>Klaassen CD, Amdur MO, Doull J (eds) (1995). Casarett and Doull's Toxicology. The Basic Science of Poisons. 5th ed. New York, NY: McGraw-Hill.</reference_text>
+          <pubmed_id/>
+        </reference>
+        <reference>
+          <reference_text>ATSDR - Agency for Toxic Substances and Disease Registry (2003). Toxicological profile for pyrethrins and pyrethroids. U.S. Public Health Service in collaboration with U.S. Environmental Protection Agency (EPA). : http://www.atsdr.cdc.gov/toxprofiles/tp155.html</reference_text>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0001143</target_id>
+      <name>Sodium channel protein type 9 subunit alpha</name>
+      <uniprot_id>Q15858</uniprot_id>
+      <mechanism_of_action>This pyrethroid exerts its profound effect by prolonging the open phase of the sodium channel gates when a nerve cell is excited. This pyrethroid is a axonic poison that block the closing of the sodium gates in the nerves, and, thus, prolongs the return of the membrane potential to its resting state leading to hyperactivity of the nervous system which can result in paralysis and/or death. Type I Pyrethroid esters (lacking the alpha-cyano substituents) affect sodium channels in nerve membranes, causing repetitive (sensory, motor) neuronal discharge and a prolonged negative afterpotential, the effects being quite similar to those produced by DDT (L857, A560).</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Everts HB, Sundberg JP, Ong DE: Immunolocalization of retinoic acid biosynthesis systems in selected sites in rat. Exp Cell Res. 2005 Aug 15;308(2):309-19.</reference_text>
+          <pubmed_id>15950969</pubmed_id>
+        </reference>
+        <reference>
+          <reference_text>Klaassen CD, Amdur MO, Doull J (eds) (1995). Casarett and Doull's Toxicology. The Basic Science of Poisons. 5th ed. New York, NY: McGraw-Hill.</reference_text>
+          <pubmed_id/>
+        </reference>
+        <reference>
+          <reference_text>ATSDR - Agency for Toxic Substances and Disease Registry (2003). Toxicological profile for pyrethrins and pyrethroids. U.S. Public Health Service in collaboration with U.S. Environmental Protection Agency (EPA). : http://www.atsdr.cdc.gov/toxprofiles/tp155.html</reference_text>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0003635</target_id>
+      <name>Sodium channel subunit beta-1</name>
+      <uniprot_id>Q07699</uniprot_id>
+      <mechanism_of_action>This pyrethroid exerts its profound effect by prolonging the open phase of the sodium channel gates when a nerve cell is excited. This pyrethroid is a axonic poison that block the closing of the sodium gates in the nerves, and, thus, prolongs the return of the membrane potential to its resting state leading to hyperactivity of the nervous system which can result in paralysis and/or death. Type I Pyrethroid esters (lacking the alpha-cyano substituents) affect sodium channels in nerve membranes, causing repetitive (sensory, motor) neuronal discharge and a prolonged negative afterpotential, the effects being quite similar to those produced by DDT (L857, A560).</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Everts HB, Sundberg JP, Ong DE: Immunolocalization of retinoic acid biosynthesis systems in selected sites in rat. Exp Cell Res. 2005 Aug 15;308(2):309-19.</reference_text>
+          <pubmed_id>15950969</pubmed_id>
+        </reference>
+        <reference>
+          <reference_text>Klaassen CD, Amdur MO, Doull J (eds) (1995). Casarett and Doull's Toxicology. The Basic Science of Poisons. 5th ed. New York, NY: McGraw-Hill.</reference_text>
+          <pubmed_id/>
+        </reference>
+        <reference>
+          <reference_text>ATSDR - Agency for Toxic Substances and Disease Registry (2003). Toxicological profile for pyrethrins and pyrethroids. U.S. Public Health Service in collaboration with U.S. Environmental Protection Agency (EPA). : http://www.atsdr.cdc.gov/toxprofiles/tp155.html</reference_text>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0003636</target_id>
+      <name>Sodium channel subunit beta-2</name>
+      <uniprot_id>O60939</uniprot_id>
+      <mechanism_of_action>This pyrethroid exerts its profound effect by prolonging the open phase of the sodium channel gates when a nerve cell is excited. This pyrethroid is a axonic poison that block the closing of the sodium gates in the nerves, and, thus, prolongs the return of the membrane potential to its resting state leading to hyperactivity of the nervous system which can result in paralysis and/or death. Type I Pyrethroid esters (lacking the alpha-cyano substituents) affect sodium channels in nerve membranes, causing repetitive (sensory, motor) neuronal discharge and a prolonged negative afterpotential, the effects being quite similar to those produced by DDT (L857, A560).</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Everts HB, Sundberg JP, Ong DE: Immunolocalization of retinoic acid biosynthesis systems in selected sites in rat. Exp Cell Res. 2005 Aug 15;308(2):309-19.</reference_text>
+          <pubmed_id>15950969</pubmed_id>
+        </reference>
+        <reference>
+          <reference_text>Klaassen CD, Amdur MO, Doull J (eds) (1995). Casarett and Doull's Toxicology. The Basic Science of Poisons. 5th ed. New York, NY: McGraw-Hill.</reference_text>
+          <pubmed_id/>
+        </reference>
+        <reference>
+          <reference_text>ATSDR - Agency for Toxic Substances and Disease Registry (2003). Toxicological profile for pyrethrins and pyrethroids. U.S. Public Health Service in collaboration with U.S. Environmental Protection Agency (EPA). : http://www.atsdr.cdc.gov/toxprofiles/tp155.html</reference_text>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0003637</target_id>
+      <name>Sodium channel subunit beta-3</name>
+      <uniprot_id>Q9NY72</uniprot_id>
+      <mechanism_of_action>This pyrethroid exerts its profound effect by prolonging the open phase of the sodium channel gates when a nerve cell is excited. This pyrethroid is a axonic poison that block the closing of the sodium gates in the nerves, and, thus, prolongs the return of the membrane potential to its resting state leading to hyperactivity of the nervous system which can result in paralysis and/or death. Type I Pyrethroid esters (lacking the alpha-cyano substituents) affect sodium channels in nerve membranes, causing repetitive (sensory, motor) neuronal discharge and a prolonged negative afterpotential, the effects being quite similar to those produced by DDT (L857, A560).</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Everts HB, Sundberg JP, Ong DE: Immunolocalization of retinoic acid biosynthesis systems in selected sites in rat. Exp Cell Res. 2005 Aug 15;308(2):309-19.</reference_text>
+          <pubmed_id>15950969</pubmed_id>
+        </reference>
+        <reference>
+          <reference_text>Klaassen CD, Amdur MO, Doull J (eds) (1995). Casarett and Doull's Toxicology. The Basic Science of Poisons. 5th ed. New York, NY: McGraw-Hill.</reference_text>
+          <pubmed_id/>
+        </reference>
+        <reference>
+          <reference_text>ATSDR - Agency for Toxic Substances and Disease Registry (2003). Toxicological profile for pyrethrins and pyrethroids. U.S. Public Health Service in collaboration with U.S. Environmental Protection Agency (EPA). : http://www.atsdr.cdc.gov/toxprofiles/tp155.html</reference_text>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0003638</target_id>
+      <name>Sodium channel subunit beta-4</name>
+      <uniprot_id>Q8IWT1</uniprot_id>
+      <mechanism_of_action>This pyrethroid exerts its profound effect by prolonging the open phase of the sodium channel gates when a nerve cell is excited. This pyrethroid is a axonic poison that block the closing of the sodium gates in the nerves, and, thus, prolongs the return of the membrane potential to its resting state leading to hyperactivity of the nervous system which can result in paralysis and/or death. Type I Pyrethroid esters (lacking the alpha-cyano substituents) affect sodium channels in nerve membranes, causing repetitive (sensory, motor) neuronal discharge and a prolonged negative afterpotential, the effects being quite similar to those produced by DDT (L857, A560).</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Everts HB, Sundberg JP, Ong DE: Immunolocalization of retinoic acid biosynthesis systems in selected sites in rat. Exp Cell Res. 2005 Aug 15;308(2):309-19.</reference_text>
+          <pubmed_id>15950969</pubmed_id>
+        </reference>
+        <reference>
+          <reference_text>Klaassen CD, Amdur MO, Doull J (eds) (1995). Casarett and Doull's Toxicology. The Basic Science of Poisons. 5th ed. New York, NY: McGraw-Hill.</reference_text>
+          <pubmed_id/>
+        </reference>
+        <reference>
+          <reference_text>ATSDR - Agency for Toxic Substances and Disease Registry (2003). Toxicological profile for pyrethrins and pyrethroids. U.S. Public Health Service in collaboration with U.S. Environmental Protection Agency (EPA). : http://www.atsdr.cdc.gov/toxprofiles/tp155.html</reference_text>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0000218</target_id>
+      <name>Calcium-transporting ATPase type 2C member 1</name>
+      <uniprot_id>P98194</uniprot_id>
+      <mechanism_of_action>This pyrethroid inhibits Na+/K+ ATPase and Ca2+ and Mg2+ ATPase, which are essential for the transport of calcium across membranes. This results in the accumulation of intracellular free calcium ions, which promotes release of neurotransmitters from storage vesicles, the subsequent depolarization of adjacent neurons, and the propagation of stimuli throughout the central nervous system. (T10)</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Casarett LJ, Klaassen CD, and Watkins JB (2003). Casarett and Doull's essentials of toxicology. New York: McGraw-Hill/Medical Pub. Div.</reference_text>
+          <pubmed_id/>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0005014</target_id>
+      <name>Calcium-transporting ATPase type 2C member 2</name>
+      <uniprot_id>O75185</uniprot_id>
+      <mechanism_of_action>This pyrethroid inhibits Na+/K+ ATPase and Ca2+ and Mg2+ ATPase, which are essential for the transport of calcium across membranes. This results in the accumulation of intracellular free calcium ions, which promotes release of neurotransmitters from storage vesicles, the subsequent depolarization of adjacent neurons, and the propagation of stimuli throughout the central nervous system. (T10)</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Casarett LJ, Klaassen CD, and Watkins JB (2003). Casarett and Doull's essentials of toxicology. New York: McGraw-Hill/Medical Pub. Div.</reference_text>
+          <pubmed_id/>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0003888</target_id>
+      <name>Sarcoplasmic/endoplasmic reticulum calcium ATPase 1</name>
+      <uniprot_id>O14983</uniprot_id>
+      <mechanism_of_action>This pyrethroid inhibits Na+/K+ ATPase and Ca2+ and Mg2+ ATPase, which are essential for the transport of calcium across membranes. This results in the accumulation of intracellular free calcium ions, which promotes release of neurotransmitters from storage vesicles, the subsequent depolarization of adjacent neurons, and the propagation of stimuli throughout the central nervous system. (T10)</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Casarett LJ, Klaassen CD, and Watkins JB (2003). Casarett and Doull's essentials of toxicology. New York: McGraw-Hill/Medical Pub. Div.</reference_text>
+          <pubmed_id/>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0003477</target_id>
+      <name>Sarcoplasmic/endoplasmic reticulum calcium ATPase 2</name>
+      <uniprot_id>P16615</uniprot_id>
+      <mechanism_of_action>This pyrethroid inhibits Na+/K+ ATPase and Ca2+ and Mg2+ ATPase, which are essential for the transport of calcium across membranes. This results in the accumulation of intracellular free calcium ions, which promotes release of neurotransmitters from storage vesicles, the subsequent depolarization of adjacent neurons, and the propagation of stimuli throughout the central nervous system. (T10)</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Casarett LJ, Klaassen CD, and Watkins JB (2003). Casarett and Doull's essentials of toxicology. New York: McGraw-Hill/Medical Pub. Div.</reference_text>
+          <pubmed_id/>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0005030</target_id>
+      <name>Sarcoplasmic/endoplasmic reticulum calcium ATPase 3</name>
+      <uniprot_id>Q93084</uniprot_id>
+      <mechanism_of_action>This pyrethroid inhibits Na+/K+ ATPase and Ca2+ and Mg2+ ATPase, which are essential for the transport of calcium across membranes. This results in the accumulation of intracellular free calcium ions, which promotes release of neurotransmitters from storage vesicles, the subsequent depolarization of adjacent neurons, and the propagation of stimuli throughout the central nervous system. (T10)</mechanism_of_action>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Casarett LJ, Klaassen CD, and Watkins JB (2003). Casarett and Doull's essentials of toxicology. New York: McGraw-Hill/Medical Pub. Div.</reference_text>
+          <pubmed_id/>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0000956</target_id>
+      <name>Nuclear receptor subfamily 1 group I member 2</name>
+      <uniprot_id>O75469</uniprot_id>
+      <mechanism_of_action/>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Sipes NS, Martin MT, Kothiya P, Reif DM, Judson RS, Richard AM, Houck KA, Dix DJ, Kavlock RJ, Knudsen TB: Profiling 976 ToxCast chemicals across 331 enzymatic and receptor signaling assays. Chem Res Toxicol. 2013 Jun 17;26(6):878-95. doi: 10.1021/tx400021f. Epub 2013 May 16.</reference_text>
+          <pubmed_id>23611293</pubmed_id>
+        </reference>
+      </references>
+    </target>
+    <target>
+      <target_id>BE0001777</target_id>
+      <name>Bile acid receptor</name>
+      <uniprot_id>Q96RI1</uniprot_id>
+      <mechanism_of_action/>
+      <constants>
+      </constants>
+      <references>
+        <reference>
+          <reference_text>Sipes NS, Martin MT, Kothiya P, Reif DM, Judson RS, Richard AM, Houck KA, Dix DJ, Kavlock RJ, Knudsen TB: Profiling 976 ToxCast chemicals across 331 enzymatic and receptor signaling assays. Chem Res Toxicol. 2013 Jun 17;26(6):878-95. doi: 10.1021/tx400021f. Epub 2013 May 16.</reference_text>
+          <pubmed_id>23611293</pubmed_id>
+        </reference>
+      </references>
+    </target>
+  </targets>
+</compound>
+</T3DB>

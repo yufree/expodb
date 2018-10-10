@@ -1,0 +1,7 @@
+]0;~/expodb[?1034hyumiaodeMacBook-Pro:expodb yufree$ git init
+Initialized empty Git repository in /Users/yufree/expodb/.git/
+]0;~/expodbyumiaodeMacBook-Pro:expodb yufree$ git remote add origin h ttps://github.com/yufree/expodb.git
+]0;~/expodbyumiaodeMacBook-Pro:expodb yufree$ git push -u origin mast er
+error: src refspec master does not match any.
+error: failed to push some refs to 'https://github.com/yufree/expodb.git'
+]0;~/expodbyumiaodeMacBook-Pro:expodb yufree$ git add .
