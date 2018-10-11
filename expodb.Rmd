@@ -281,10 +281,40 @@ foodbnew <- foodb[!duplicated(foodb$InChIKey),]
 hmdbt3db <- merge(hmdbnew,t3dbnew,by = 'InChIKey')
 foodbdrug <- merge(foodbnew, drugbanknew,by = 'InChIKey')
 
+length(intersect(hmdbnew$InChIKey, foodbnew$InChIKey))
+# 15657
+length(intersect(hmdbnew$InChIKey, drugbanknew$InChIKey))
+# 2040
+length(intersect(t3dbnew$InChIKey, foodbnew$InChIKey))
+# 547
+length(intersect(t3dbnew$InChIKey, drugbanknew$InChIKey))
+# 613
 htfd <- merge(hmdbt3db,foodbdrug,by = 'InChIKey')
+# 231
+sum(is.na(htfd$logpexp.x|htfd$logpexp.y))
+# 53
+library(eulerr)
+list <- list(HMDB=unique(hmdbnew$InChIKey),T3DB = na.omit(unique(t3dbnew$InChIKey)), FooDB = na.omit(foodbnew$InChIKey), DrugBank = na.omit(drugbanknew$InChIKey))
+v <- euler(list)
+eulerr:::plot.euler(v, conuts = T, font = 1, cex = 1, alpha = 0.5, legend = T, quantities = T)
 
-# 870
-omim <- read_csv("hmdb/omim.csv")
+library(gplots) 
+venn(list)
+
+library(VennDiagram)
+library(scales)
+venn.diagram(list,'htfd.png',fill = hue_pal()(4),imagetype = 'png')
+
+companno <- read_csv("companno.csv")
+list <- list(HMDB=unique(hmdbnew$InChIKey),T3DB = na.omit(unique(t3dbnew$InChIKey)), FooDB = na.omit(foodbnew$InChIKey), DrugBank = na.omit(drugbanknew$InChIKey), MSSM = na.omit(companno$InChIKey))
+venn.diagram(list,'htfdm.png',margin = c(.2,.2,.2,.2),fill = hue_pal()(5),imagetype = 'png')
+```
+
+
+
+```{r}
+write_csv(htfd,'htfd.csv')
+omim <- read_csv("hmdb/hmdbomim.csv")
 omimt3db <- read_csv("hmdb/omimt3db.csv")
 
 sum(unique(omim$omimid) %in% unique(omimt3db$omimid))
