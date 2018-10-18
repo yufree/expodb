@@ -1,5 +1,5 @@
 {
-    "path" : "~/expodb/foodb",
+    "path" : "~/expodb",
     "sortOrder" : [
         {
             "ascending" : true,

@@ -1,6 +1,8 @@
 ---
 title: "HMDB cookbook"
 output: html_notebook
+editor_options: 
+  chunk_output_type: console
 ---
 
 ## Download the data
@@ -141,6 +143,8 @@ del context
 
 ## Import csv into R
 
+### HMDB
+
 ```{r}
 library(tidyverse)
 hmdb <- read_csv('hmdb/hmdb.csv')
@@ -195,6 +199,7 @@ write.csv(keggmap,file = 'hmdbkeggmap.csv')
 write.csv(hmdb[,-c(1:4)],file = 'hmdbnew.csv')
 ```
 
+### T3DB
 
 ```{r}
 t3db <- read_csv("t3db/t3db.csv")
@@ -261,10 +266,13 @@ route_of_exposure <- route_of_exposure[!duplicated(route_of_exposure),]
 write.csv(route_of_exposure,file = 't3dbroute_of_exposure.csv')
 ```
 
-# Merge database
+## Merge database
 
 ```{r}
 library(readr)
+library(readxl)
+# refmet
+refmet <- read_excel("refmet/refmet_020418.xls")
 # drugbank
 drugbank <- read_csv("drugbank/drugbank.csv")
 drugbank$InChIKey <- drugbank$`Standard InChI Key`
@@ -293,8 +301,10 @@ htfd <- merge(hmdbt3db,foodbdrug,by = 'InChIKey')
 # 231
 sum(is.na(htfd$logpexp.x|htfd$logpexp.y))
 # 53
+
+list <- list(HMDB=unique(hmdbnew$InChIKey),T3DB = na.omit(unique(t3dbnew$InChIKey)), FooDB = na.omit(foodbnew$InChIKey), DrugBank = na.omit(drugbanknew$InChIKey), refmet = na.omit(refmet$inchi_key))
+
 library(eulerr)
-list <- list(HMDB=unique(hmdbnew$InChIKey),T3DB = na.omit(unique(t3dbnew$InChIKey)), FooDB = na.omit(foodbnew$InChIKey), DrugBank = na.omit(drugbanknew$InChIKey))
 v <- euler(list)
 eulerr:::plot.euler(v, conuts = T, font = 1, cex = 1, alpha = 0.5, legend = T, quantities = T)
 
@@ -303,19 +313,18 @@ venn(list)
 
 library(VennDiagram)
 library(scales)
-venn.diagram(list,'htfd.png',fill = hue_pal()(4),imagetype = 'png')
+venn.diagram(list,'htfdr.png',fill = hue_pal()(5),margin = c(.05,.05,.05,.05),imagetype = 'png')
 
-companno <- read_csv("companno.csv")
-list <- list(HMDB=unique(hmdbnew$InChIKey),T3DB = na.omit(unique(t3dbnew$InChIKey)), FooDB = na.omit(foodbnew$InChIKey), DrugBank = na.omit(drugbanknew$InChIKey), MSSM = na.omit(companno$InChIKey))
-venn.diagram(list,'htfdm.png',margin = c(.2,.2,.2,.2),fill = hue_pal()(5),imagetype = 'png')
+# companno <- read_csv("companno.csv")
+# list <- list(HMDB=unique(hmdbnew$InChIKey),T3DB = na.omit(unique(t3dbnew$InChIKey)), FooDB = na.omit(foodbnew$InChIKey), DrugBank = na.omit(drugbanknew$InChIKey), MSSM = na.omit(companno$InChIKey))
+# venn.diagram(list,'htfdm.png',margin = c(.05,.05,.05,.05),fill = hue_pal()(5),imagetype = 'png')
 ```
 
-
+## Disease
 
 ```{r}
-write_csv(htfd,'htfd.csv')
 omim <- read_csv("hmdb/hmdbomim.csv")
-omimt3db <- read_csv("hmdb/omimt3db.csv")
+omimt3db <- read_csv("t3db/t3dbomim.csv")
 
 sum(unique(omim$omimid) %in% unique(omimt3db$omimid))
 # 80
@@ -329,13 +338,44 @@ length(unique(omimt3db$omimid))
 # 587
 length(unique(omimt3db$accession))
 # 70
-
 ```
 
+## Pathway
+
 ```{r pathway}
-keggid <- kegg$KEGG[!is.na(kegg$KEGG)]
-url <- KEGGREST::color.pathway.by.objects(bg.color.list = c(rep('red',length(keggid))), 
-        fg.color.list = c(rep('green',length(keggid))), object.id.list = keggid, 
-        pathway.id = 'map01100')
+# keggid <- kegg$KEGG[!is.na(kegg$KEGG)]
+# url <- KEGGREST::color.pathway.by.objects(bg.color.list = c(rep('red',length(keggid))), 
+#         fg.color.list = c(rep('green',length(keggid))), object.id.list = keggid, 
+#         pathway.id = 'map01100')
+#         
+hmdbsmpdb <- read_csv("hmdb/hmdbsmpdb.csv")
+t3dbsmpdb <- read_csv("t3db/t3dbsmpdb.csv")
+
+length(intersect(unique(hmdbsmpdb$smpdb),unique(t3dbsmpdb$smpdb)))
+```
+
+```{r}
+hpvcasinchikey <- read_csv("hpvcasinchikey.csv")
+companno <- read_csv("companno.csv")
+htfd <- read_csv("htfd.csv")
+mssmcas <- read_csv("mssmcas.csv")
+
+compannocas <- merge(mssmcas,companno,by = 'InChIKey')
+compannocas$CAS[compannocas$CAS == 'No result'] <- NA
+
+write_csv(compannocas,'compannocas.csv')
+
+length(intersect(unique(hpvcasinchikey$InChIKey),unique(companno$InChIKey)))
+length(intersect(unique(hpvcasinchikey$InChIKey),unique(htfd$InChIKey)))
+
+list <- list(HTFD=unique(htfd$InChIKey),MSSM = na.omit(unique(companno$InChIKey)), HPV = na.omit(hpvcasinchikey$InChIKey))
+
+list2 <- list(HTFD=na.omit(unique(htfd$cas_registry_number.x)),MSSM = na.omit(unique(mssmcas$CAS)), HPV = na.omit(hpvcasinchikey$CAS))
+
+library(VennDiagram)
+library(scales)
+venn.diagram(list,'htfdmhpv.png',fill = hue_pal()(3),imagetype = 'png')
+
+venn.diagram(list2,'htfdmhpv2.png',fill = hue_pal()(3),imagetype = 'png')
 ```
 
