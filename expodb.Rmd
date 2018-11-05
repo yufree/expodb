@@ -293,38 +293,15 @@ colnames(dsstoxnew) <- c('dssid','InChI','InChIKey')
 list <- list(HMDB=unique(hmdbnew$InChIKey),T3DB = na.omit(unique(t3dbnew$InChIKey)), FooDB = na.omit(foodbnew$InChIKey), DrugBank = na.omit(drugbanknew$InChIKey), RefMet = na.omit(refmet$inchi_key),DSSTox = na.omit(dsstoxnew$InChIKey))
 
 library(venn)
-png('htfdrd.png',height = 800,width = 800)
-venn(list,zcolor = hue_pal()(6),cexsn = 1.5,cexil = 1.3)
+png('hd.png',width = 800,height = 800)
+par(mfrow = c(2,3))
+venn(list[c(1,6)],zcolor = hue_pal()(2),cexsn = 1.5,cexil = 1.1)
+venn(list[c(2,6)],zcolor = hue_pal()(2),cexsn = 1.5,cexil = 1.1)
+venn(list[c(3,6)],zcolor = hue_pal()(2),cexsn = 1.5,cexil = 1.1)
+venn(list[c(4,6)],zcolor = hue_pal()(2),cexsn = 1.5,cexil = 1.1)
+venn(list[c(5,6)],zcolor = hue_pal()(2),cexsn = 1.5,cexil = 1.1)
 dev.off()
-
-hmdbt3db <- merge(hmdbnew,t3dbnew,by = 'InChIKey')
-foodbdrug <- merge(foodbnew, drugbanknew,by = 'InChIKey')
-
-length(intersect(hmdbnew$InChIKey, foodbnew$InChIKey))
-# 15657
-length(intersect(hmdbnew$InChIKey, drugbanknew$InChIKey))
-# 2040
-length(intersect(t3dbnew$InChIKey, foodbnew$InChIKey))
-# 547
-length(intersect(t3dbnew$InChIKey, drugbanknew$InChIKey))
-# 613
-htfd <- merge(hmdbt3db,foodbdrug,by = 'InChIKey')
-# 231
-sum(is.na(htfd$logpexp.x|htfd$logpexp.y))
-# 53
-
-
-
-# library(eulerr)
-# v <- euler(list)
-# eulerr:::plot.euler(v, conuts = T, font = 1, cex = 1, alpha = 0.5, legend = T, quantities = T)
-# 
-# library(gplots) 
-# venn(list)
-
-# library(VennDiagram)
-# library(scales)
-# venn.diagram(list,'htfdr.png',fill = hue_pal()(5),margin = c(.05,.05,.05,.05),imagetype = 'png')
-
+# all overlap
+venn(list,zcolor = hue_pal()(6),cexsn = 1.5,cexil = 1.3)
 ```
 
