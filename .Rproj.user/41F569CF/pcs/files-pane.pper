@@ -1,9 +1,0 @@
-{
-    "path" : "~/expodb",
-    "sortOrder" : [
-        {
-            "ascending" : true,
-            "columnIndex" : 2
-        }
-    ]
-}
