@@ -1,83 +1,0 @@
-]0;~/expodb[?1034hyumiaodeMacBook-Pro:expodb yufree$ git init
-Initialized empty Git repository in /Users/yufree/expodb/.git/
-]0;~/expodbyumiaodeMacBook-Pro:expodb yufree$ git remote add origin h ttps://github.com/yufree/expodb.git
-]0;~/expodbyumiaodeMacBook-Pro:expodb yufree$ git push -u origin mast er
-error: src refspec master does not match any.
-error: failed to push some refs to 'https://github.com/yufree/expodb.git'
-]0;~/expodbyumiaodeMacBook-Pro:expodb yufree$ git add .
-warning: CRLF will be replaced by LF in foodb/health_effects.csv.
-The file will have its original line endings in your working directory.
-warning: CRLF will be replaced by LF in hmdb/hmdb.csv.
-The file will have its original line endings in your working directory.
-warning: CRLF will be replaced by LF in t3db/t3db.csv.
-The file will have its original line endings in your working directory.
-]0;~/expodbyumiaodeMacBook-Pro:expodb yufree$ git add origin[K[K[K[K[K[K[K[K[K[Kcommit -m ''d'a't'a'b'a's' [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ce''
-[master (root-commit) f240798] database
- 48 files changed, 1174482 insertions(+)
- create mode 100644 .Rhistory
- create mode 100644 .Rproj.user/41F569CF/console06/400C8D0A
- create mode 100644 .Rproj.user/41F569CF/console06/400C8D0A.env
- create mode 100644 .Rproj.user/41F569CF/console06/INDEX001
- create mode 100644 .Rproj.user/41F569CF/pcs/files-pane.pper
- create mode 100644 .Rproj.user/41F569CF/pcs/source-pane.pper
- create mode 100644 .Rproj.user/41F569CF/pcs/windowlayoutstate.pper
- create mode 100644 .Rproj.user/41F569CF/pcs/workbench-pane.pper
- create mode 100644 .Rproj.user/41F569CF/rmd-outputs
- create mode 100644 .Rproj.user/41F569CF/saved_source_markers
- create mode 100644 .Rproj.user/41F569CF/sources/prop/19E73B3E
- create mode 100644 .Rproj.user/41F569CF/sources/prop/INDEX
- create mode 100644 .Rproj.user/41F569CF/sources/s-BBA3ACF0/9BEA1BD1
- create mode 100644 .Rproj.user/41F569CF/sources/s-BBA3ACF0/9BEA1BD1-contents
- create mode 100644 .Rproj.user/41F569CF/sources/s-BBA3ACF0/lock_file
- create mode 100644 .Rproj.user/shared/notebooks/2D25731-expodb/1/41F569CF8F700BA0/chunks.json
- create mode 100644 .Rproj.user/shared/notebooks/2D25731-expodb/1/s/cg1esl92o3wgd/000002.csv
- create mode 100644 .Rproj.user/shared/notebooks/2D25731-expodb/1/s/cg1esl92o3wgd/000003.error
- create mode 100644 .Rproj.user/shared/notebooks/2D25731-expodb/1/s/chunks.json
- create mode 100644 .Rproj.user/shared/notebooks/patch-chunk-names
- create mode 100644 .Rproj.user/shared/notebooks/paths
- create mode 100644 drugbank/drugbank.csv
- create mode 100644 expodb.Rmd
- create mode 100644 expodb.Rproj
- create mode 100644 expodb.nb.html
- create mode 100644 foodb/compounds.csv
- create mode 100644 foodb/food_taxonomies.csv
- create mode 100644 foodb/foods.csv
- create mode 100644 foodb/health_effects.csv
- create mode 100644 foodb/nutrients.csv
- create mode 100644 foodb/pathways.csv
- create mode 100644 foodb/references.csv
- create mode 100644 hmdb/hmdb.csv
- create mode 100644 hmdb/hmdbdname.csv
- create mode 100644 hmdb/hmdbkeggmap.csv
- create mode 100644 hmdb/hmdbnew.csv
- create mode 100644 hmdb/hmdbomim.csv
- create mode 100644 hmdb/hmdbsmpdb.csv
- create mode 100644 hmdb/sample.xml
- create mode 100644 hmdb/xmlpython.py
- create mode 100644 t3db/sample.xml
- create mode 100644 t3db/t3db.csv
- create mode 100644 t3db/t3db.py
- create mode 100644 t3db/t3dbcategories.csv
- create mode 100644 t3db/t3dbkeggmap.csv
- create mode 100644 t3db/t3dbnew.csv
- create mode 100644 t3db/t3dbomim.csv
- create mode 100644 t3db/t3dbroute_of_exposure.csv
-]0;~/expodbyumiaodeMacBook-Pro:expodb yufree$ git push -u origin mast er
-Counting objects: 65, done.
-Delta compression using up to 4 threads.
-Compressing objects:   1% (1/55)   Compressing objects:   3% (2/55)   Compressing objects:   5% (3/55)   Compressing objects:   7% (4/55)   Compressing objects:   9% (5/55)   Compressing objects:  10% (6/55)   Compressing objects:  12% (7/55)   Compressing objects:  14% (8/55)   Compressing objects:  16% (9/55)   Compressing objects:  18% (10/55)   Compressing objects:  20% (11/55)   Compressing objects:  21% (12/55)   Compressing objects:  23% (13/55)   Compressing objects:  25% (14/55)   Compressing objects:  27% (15/55)   Compressing objects:  29% (16/55)   Compressing objects:  30% (17/55)   Compressing objects:  32% (18/55)   Compressing objects:  34% (19/55)   Compressing objects:  36% (20/55)   Compressing objects:  38% (21/55)   Compressing objects:  40% (22/55)   Compressing objects:  41% (23/55)   Compressing objects:  43% (24/55)   Compressing objects:  45% (25/55)   Compressing objects:  47% (26/55)   Compressing objects:  49% (27/55)   Compressing objects:  50% (28/55)   Compressing objects:  52% (29/55)   Compressing objects:  54% (30/55)   Compressing objects:  56% (31/55)   Compressing objects:  58% (32/55)   Compressing objects:  60% (33/55)   Compressing objects:  61% (34/55)   Compressing objects:  63% (35/55)   Compressing objects:  65% (36/55)   Compressing objects:  67% (37/55)   Compressing objects:  69% (38/55)   Compressing objects:  70% (39/55)   Compressing objects:  72% (40/55)   Compressing objects:  74% (41/55)   Compressing objects:  76% (42/55)   Compressing objects:  78% (43/55)   Compressing objects:  80% (44/55)   Compressing objects:  81% (45/55)   Compressing objects:  83% (46/55)   Compressing objects:  85% (47/55)   Compressing objects:  87% (48/55)   Compressing objects:  89% (49/55)   Compressing objects:  90% (50/55)   Compressing objects:  92% (51/55)   Compressing objects:  94% (52/55)   Compressing objects:  96% (53/55)   Compressing objects:  98% (54/55)   Compressing objects: 100% (55/55)   Compressing objects: 100% (55/55), done.
-Writing objects:   1% (1/65)   Writing objects:   3% (2/65)   Writing objects:   4% (3/65)   Writing objects:   6% (4/65)   Writing objects:   7% (5/65)   Writing objects:   9% (6/65)   Writing objects:  10% (7/65)   Writing objects:  12% (8/65)   Writing objects:  13% (9/65)   Writing objects:  15% (10/65)   Writing objects:  16% (11/65)   Writing objects:  18% (12/65)   Writing objects:  20% (13/65)   Writing objects:  21% (14/65)   Writing objects:  23% (15/65)   Writing objects:  24% (16/65)   Writing objects:  26% (17/65)   Writing objects:  27% (18/65)   Writing objects:  29% (19/65)   Writing objects:  30% (20/65)   Writing objects:  32% (21/65)   Writing objects:  33% (22/65)   Writing objects:  35% (23/65)   Writing objects:  36% (24/65)   Writing objects:  38% (25/65)   Writing objects:  40% (26/65)   Writing objects:  41% (27/65)   Writing objects:  43% (28/65)   Writing objects:  44% (29/65)   Writing objects:  46% (30/65)   Writing objects:  47% (31/65)   Writing objects:  49% (32/65)   Writing objects:  50% (33/65)   Writing objects:  52% (34/65)   Writing objects:  53% (35/65)   Writing objects:  55% (36/65)   Writing objects:  56% (37/65)   Writing objects:  58% (38/65)   Writing objects:  60% (39/65)   Writing objects:  61% (40/65)   Writing objects:  61% (40/65), 848.00 KiB | 741.00 KiB/s   Writing objects:  61% (40/65), 6.75 MiB | 3.14 MiB/s   Writing objects:  63% (41/65), 6.75 MiB | 3.14 MiB/s   Writing objects:  64% (42/65), 6.75 MiB | 3.14 MiB/s   Writing objects:  66% (43/65), 6.75 MiB | 3.14 MiB/s   Writing objects:  67% (44/65), 6.75 MiB | 3.14 MiB/s   Writing objects:  69% (45/65), 6.75 MiB | 3.14 MiB/s   Writing objects:  70% (46/65), 6.75 MiB | 3.14 MiB/s   Writing objects:  72% (47/65), 6.75 MiB | 3.14 MiB/s   Writing objects:  73% (48/65), 6.75 MiB | 3.14 MiB/s   Writing objects:  73% (48/65), 10.22 MiB | 2.62 MiB/s   Writing objects:  73% (48/65), 16.89 MiB | 3.82 MiB/s   Writing objects:  75% (49/65), 16.89 MiB | 3.82 MiB/s   Writing objects:  76% (50/65), 16.89 MiB | 3.82 MiB/s   Writing objects:  78% (51/65), 16.89 MiB | 3.82 MiB/s   Writing objects:  78% (51/65), 18.08 MiB | 3.23 MiB/s   Writing objects:  80% (52/65), 18.08 MiB | 3.23 MiB/s   Writing objects:  81% (53/65), 18.08 MiB | 3.23 MiB/s   Writing objects:  83% (54/65), 24.13 MiB | 3.53 MiB/s   Writing objects:  84% (55/65), 24.13 MiB | 3.53 MiB/s   Writing objects:  86% (56/65), 24.13 MiB | 3.53 MiB/s   Writing objects:  87% (57/65), 24.13 MiB | 3.53 MiB/s   Writing objects:  89% (58/65), 24.13 MiB | 3.53 MiB/s   Writing objects:  90% (59/65), 24.13 MiB | 3.53 MiB/s   Writing objects:  92% (60/65), 24.13 MiB | 3.53 MiB/s   Writing objects:  93% (61/65), 24.13 MiB | 3.53 MiB/s   Writing objects:  95% (62/65), 24.13 MiB | 3.53 MiB/s   Writing objects:  96% (63/65), 24.13 MiB | 3.53 MiB/s   Writing objects:  98% (64/65), 24.13 MiB | 3.53 MiB/s   Writing objects: 100% (65/65), 24.13 MiB | 3.53 MiB/s   Writing objects: 100% (65/65), 28.79 MiB | 3.92 MiB/s, done.
-Total 65 (delta 1), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/1)   [Kremote: Resolving deltas: 100% (1/1)   [Kremote: Resolving deltas: 100% (1/1), done.[K
-remote: warning: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.[K
-remote: warning: See http://git.io/iEPt8g for more information.[K
-remote: warning: File hmdb/hmdb.csv is 68.04 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB[K
-remote: warning: File hmdb/hmdbnew.csv is 59.45 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB[K
-remote: 
-remote: Create a pull request for 'master' on GitHub by visiting:[K
-remote:      https://github.com/yufree/expodb/pull/new/master[K
-remote: 
-To https://github.com/yufree/expodb.git
- * [new branch]      master -> master
-Branch 'master' set up to track remote branch 'master' from 'origin'.
-]0;~/expodbyumiaodeMacBook-Pro:expodb yufree$ 
