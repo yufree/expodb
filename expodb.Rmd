@@ -1,270 +1,11 @@
 ---
 title: "HMDB cookbook"
-output: html_notebook
-editor_options: 
-  chunk_output_type: console
+output:
+  html_document:
+    df_print: paged
+editor_options:
+  chunk_output_type: inline
 ---
-
-## Download the data
-
-## Convert the xml files into csv files
-
-### Bash
-
-```{bash}
-xmlstarlet sel -N hmdb=http://www.hmdb.ca -T -t -m //hmdb:metabolite -v "concat(//hmdb:metabolite//hmdb:accession,',',//hmdb:metabolite//hmdb:monisotopic_molecular_weight,',',//hmdb:metabolite//hmdb:iupac_name,',',//hmdb:metabolite//hmdb:name,',',//hmdb:metabolite//hmdb:chemical_formula,',',//hmdb:metabolite//hmdb:cas_registry_number,',',//hmdb:metabolite//hmdb:smiles,',',//hmdb:metabolite//hmdb:kingdom,',',//hmdb:metabolite//hmdb:direct_parent,',',//hmdb:metabolite//hmdb:taxonomy//hmdb:super_class,',',//hmdb:metabolite//hmdb:taxonomy//hmdb:class,',',//hmdb:metabolite//hmdb:taxonomy//hmdb:sub_class, ',',//hmdb:metabolite//hmdb:taxonomy//hmdb:molecular_framework)" -n hmdb_metabolites.xml > hmdb.csv
-```
-
-### python
-
-```{python}
-from io import StringIO
-from lxml import etree
-import csv
-xml = 'hmdb_metabolites.xml'
-
-ns = {'hmdb': 'http://www.hmdb.ca'}
-
-context = etree.iterparse(xml, tag='{http://www.hmdb.ca}metabolite')
-
-csvfile = open('hmdb.csv', 'w')
-fieldnames = ['omim', 'dname', 'smpdb', 'keggmap', 'accession', 'monisotopic_molecular_weight', 'iupac_name', 'name', 'chemical_formula', 'InChIKey', 'cas_registry_number', 'kegg', 'food', 'biocyc', 'pubchem', 'chemspider', 'smiles', 'metlin_id', 'kingdom', 'direct_parent', 'super_class', 'class', 'sub_class', 'molecular_framework', 'logpexp']
-writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-writer.writeheader()
-
-for event, elem in context:
-
-    try:
-        omim = elem.xpath('hmdb:diseases/hmdb:disease/hmdb:omim_id/text()', namespaces=ns)
-    except:
-        omim = 'NA'
-    try:
-        dname = elem.xpath('hmdb:diseases/hmdb:disease/hmdb:name/text()', namespaces=ns)
-    except:
-        dname = 'NA'
-    try:
-        smpdb = elem.xpath('hmdb:pathways/hmdb:pathway/hmdb:smpdb_id/text()', namespaces=ns)
-    except:
-        smpdb = 'NA'
-    try:
-        keggmap = elem.xpath('hmdb:pathways/hmdb:pathway/hmdb:kegg_map_id/text()', namespaces=ns)
-    except:
-        keggmap = 'NA'
-
-    accession = elem.xpath('hmdb:accession/text()', namespaces=ns)[0]
-    try:
-        monisotopic_molecular_weight = elem.xpath('hmdb:monisotopic_molecular_weight/text()', namespaces=ns)[0]
-    except:
-        monisotopic_molecular_weight = 'NA'
-    try:
-        iupac_name = elem.xpath('hmdb:iupac_name/text()', namespaces=ns)[0].encode('utf-8')
-    except:
-        iupac_name = 'NA'
-    name = elem.xpath('hmdb:name/text()', namespaces=ns)[0].encode('utf-8')
-    try:
-        chemical_formula = elem.xpath('hmdb:chemical_formula/text()', namespaces=ns)[0]
-    except:
-        chemical_formula = 'NA'
-    try:
-        inchikey = elem.xpath('hmdb:inchikey/text()', namespaces=ns)[0]
-    except:
-        inchikey = 'NA'
-    try:
-        cas_registry_number = elem.xpath('hmdb:cas_registry_number/text()', namespaces=ns)[0]
-    except:
-        cas_registry_number = 'NA'
-    try:
-        kegg = elem.xpath('hmdb:kegg_id/text()', namespaces=ns)[0]
-    except:
-        kegg = 'NA'
-    try:
-        food = elem.xpath('hmdb:foodb_id/text()', namespaces=ns)[0]
-    except:
-        food = 'NA'
-    try:
-        biocyc = elem.xpath('hmdb:biocyc_id/text()', namespaces=ns)[0]
-    except:
-        biocyc = 'NA'
-    try:
-        pubchem = elem.xpath('hmdb:pubchem_compound_id/text()', namespaces=ns)[0]
-    except:
-        pubchem = 'NA'
-    try:
-        chemspider = elem.xpath('hmdb:chemspider_id/text()', namespaces=ns)[0]
-    except:
-        chemspider = 'NA'
-    try:
-        smiles = elem.xpath('hmdb:smiles/text()', namespaces=ns)[0]
-    except:
-        smiles = 'NA'
-    try:
-        metlin_id = elem.xpath('hmdb:metlin_id/text()', namespaces=ns)[0]
-    except:
-        metlin_id = 'NA'
-    try:
-        logpexp = elem.xpath('hmdb:experimental_properties/hmdb:property[hmdb:kind = "logp"]/hmdb:value/text()', namespaces=ns)[0]
-    except:
-        logpexp = 'NA'
-    try:
-        kingdom = elem.xpath('hmdb:taxonomy/hmdb:kingdom/text()', namespaces=ns)[0]
-    except:
-        kingdom = 'NA'
-    try:
-        direct_parent = elem.xpath('hmdb:taxonomy/hmdb:direct_parent/text()', namespaces=ns)[0]
-    except:
-        direct_parent = 'NA'
-    try:
-        super_class = elem.xpath('hmdb:taxonomy/hmdb:super_class/text()', namespaces=ns)[0]
-    except:
-        super_class = 'NA'
-    try:
-        classorg = elem.xpath('hmdb:taxonomy/hmdb:class/text()', namespaces=ns)[0]
-    except:
-        classorg = 'NA'
-    try:
-        sub_class = elem.xpath('hmdb:taxonomy/hmdb:sub_class/text()', namespaces=ns)[0]
-    except:
-        sub_class = 'NA'
-    try:
-        molecular_framework = elem.xpath('hmdb:taxonomy/hmdb:molecular_framework/text()', namespaces=ns)[0]
-    except:
-        molecular_framework = 'NA'
-
-    writer.writerow({'omim': omim, 'dname': dname, 'smpdb': smpdb, 'keggmap': keggmap, 'accession': accession, 'monisotopic_molecular_weight': monisotopic_molecular_weight, 'iupac_name': iupac_name, 'name': name, 'chemical_formula': chemical_formula, 'InChIKey': inchikey, 'cas_registry_number': cas_registry_number, 'kegg': kegg, 'food': food, 'biocyc': biocyc, 'pubchem': pubchem, 'chemspider': chemspider, 'smiles': smiles, 'metlin_id': metlin_id, 'kingdom': kingdom, 'direct_parent': direct_parent, 'super_class': super_class, 'class': classorg, 'sub_class': sub_class, 'molecular_framework': molecular_framework, 'logpexp': logpexp})
-    # It's safe to call clear() here because no descendants will be
-    # accessed
-    elem.clear()
-# Also eliminate now-empty references from the root node to elem
-    for ancestor in elem.xpath('ancestor-or-self::*'):
-        while ancestor.getprevious() is not None:
-            del ancestor.getparent()[0]
-del context
-```
-
-## Import csv into R
-
-### HMDB
-
-```{r}
-library(tidyverse)
-hmdb <- read_csv('hmdb/hmdb.csv')
-hmdb$iupac_name <- gsub( "b'", "", as.character(hmdb$iupac_name))
-hmdb$iupac_name <- gsub( "'$", "", as.character(hmdb$iupac_name))
-hmdb$name <- gsub( "b'", "", as.character(hmdb$name))
-hmdb$name <- gsub( "'$", "", as.character(hmdb$name))
-hmdb$omim <- gsub( "^\\[", "", as.character(hmdb$omim))
-hmdb$omim <- gsub( "]$", "", as.character(hmdb$omim))
-hmdb$dname <- gsub( "^\\[", "", as.character(hmdb$dname))
-hmdb$dname <- gsub( "]$", "", as.character(hmdb$dname))
-hmdb$smpdb <- gsub( "^\\[", "", as.character(hmdb$smpdb))
-hmdb$smpdb <- gsub( "]$", "", as.character(hmdb$smpdb))
-hmdb$keggmap <- gsub( "^\\[", "", as.character(hmdb$keggmap))
-hmdb$keggmap <- gsub( "]$", "", as.character(hmdb$keggmap))
-
-disease <- hmdb[,c(1,2,5)]
-
-g <- strsplit(hmdb$omim, ",")
-omim <- data.frame(accession = rep(hmdb$accession, lapply(g, length)), omimid = unlist(g))
-
-g <- strsplit(hmdb$dname, ",")
-dname <- data.frame(accession = rep(hmdb$accession, lapply(g, length)), dname = unlist(g))
-
-omim$omimid <- gsub( "'", "", as.character(omim$omimid))
-omim$omimid <- gsub( " ", "", as.character(omim$omimid))
-
-dname$dname <- gsub( "'", "", as.character(dname$dname))
-dname$dname <- gsub( '"', "", as.character(dname$dname))
-dname$dname <- gsub( '^ ', "", as.character(dname$dname))
-
-write.csv(omim,file = 'hmdbomim.csv')
-write.csv(dname,file = 'hmdbdname.csv')
-
-pathway <- hmdb[,c(3,4,5)]
-
-g <- strsplit(hmdb$smpdb, ",")
-smpdb <- data.frame(accession = rep(hmdb$accession, lapply(g, length)), smpdb = unlist(g))
-
-g <- strsplit(hmdb$keggmap, ",")
-keggmap <- data.frame(accession = rep(hmdb$accession, lapply(g, length)), keggmap = unlist(g))
-
-smpdb$smpdb <- gsub( "'", "", as.character(smpdb$smpdb))
-smpdb$smpdb <- gsub( " ", "", as.character(smpdb$smpdb))
-
-keggmap$keggmap <- gsub( "'", "", as.character(keggmap$keggmap))
-keggmap$keggmap <- gsub( '^ ', "", as.character(keggmap$keggmap))
-
-write.csv(smpdb,file = 'hmdbsmpdb.csv')
-write.csv(keggmap,file = 'hmdbkeggmap.csv')
-
-write.csv(hmdb[,-c(1:4)],file = 'hmdbnew.csv')
-```
-
-### T3DB
-
-```{r}
-t3db <- read_csv("t3db/t3db.csv")
-t3db$iupac_name <- gsub( "b'", "", as.character(t3db$iupac_name))
-t3db$iupac_name <- gsub( "'$", "", as.character(t3db$iupac_name))
-
-t3db$name <- gsub( "b'", "", as.character(t3db$name))
-t3db$name <- gsub( "'$", "", as.character(t3db$name))
-
-t3db$InChIKey <- gsub( "InChIKey=", "", as.character(t3db$InChIKey))
-write.csv(t3db[,-c(1:5)],file = 't3dbnew.csv')
-
-g <- strsplit(t3db$omim, "\n")
-omim <- data.frame(accession = rep(t3db$accession, lapply(g, length)), omimid = unlist(g))
-omim <- omim[complete.cases(omim),]
-
-g <- strsplit(as.character(omim$omimid), " ")
-omim2 <- data.frame(accession = rep(omim$accession, lapply(g, length)), omimid = unlist(g))
-
-g <- strsplit(as.character(omim2$omimid), '(?<=.{6})', perl=TRUE)
-omim3 <- data.frame(accession = rep(omim2$accession, lapply(g, length)), omimid = unlist(g))
-
-write.csv(omim3,file = 't3dbomim.csv')
-
-t3db$smpdb <- gsub( "^\\[", "", as.character(t3db$smpdb))
-t3db$smpdb <- gsub( "]$", "", as.character(t3db$smpdb))
-t3db$keggmap <- gsub( "^\\[", "", as.character(t3db$keggmap))
-t3db$keggmap <- gsub( "]$", "", as.character(t3db$keggmap))
-t3db$categories <- gsub( "^\\[", "", as.character(t3db$categories))
-t3db$categories <- gsub( "]$", "", as.character(t3db$categories))
-t3db$route_of_exposure <- gsub( "\\(.+\\)", "", as.character(t3db$route_of_exposure))
-t3db$route_of_exposure <- gsub( " \\(.+\\)", "", as.character(t3db$route_of_exposure))
-t3db$route_of_exposure <- gsub( ", ", ";", as.character(t3db$route_of_exposure))
-t3db$route_of_exposure <- gsub("[[:space:]]", "", as.character(t3db$route_of_exposure))
-t3db$route_of_exposure <- gsub("and", "", as.character(t3db$route_of_exposure))
-t3db$route_of_exposure <- gsub("\\.", "", as.character(t3db$route_of_exposure))
-t3db$route_of_exposure <- gsub('"', "", as.character(t3db$route_of_exposure))
-t3db$route_of_exposure <- tolower(as.character(t3db$route_of_exposure))
-
-g <- strsplit(t3db$smpdb, ",")
-smpdb <- data.frame(accession = rep(t3db$accession, lapply(g, length)), smpdb = unlist(g))
-smpdb$smpdb <- gsub( "'", "", as.character(smpdb$smpdb))
-smpdb$smpdb <- gsub( " ", "", as.character(smpdb$smpdb))
-smpdb <- smpdb[!duplicated(smpdb),]
-write.csv(smpdb,file = 't3dbsmpdb.csv')
-
-g <- strsplit(t3db$keggmap, ",")
-keggmap <- data.frame(accession = rep(t3db$accession, lapply(g, length)), keggmap = unlist(g))
-keggmap$keggmap <- gsub( "'", "", as.character(keggmap$keggmap))
-keggmap$keggmap <- gsub( " ", "", as.character(keggmap$keggmap))
-keggmap <- keggmap[!duplicated(keggmap),]
-write.csv(keggmap,file = 't3dbkeggmap.csv')
-
-g <- strsplit(t3db$categories, ",")
-categories <- data.frame(accession = rep(t3db$accession, lapply(g, length)), categories = unlist(g))
-categories$categories <- gsub( "'", "", as.character(categories$categories))
-categories$categories <- gsub( " ", "", as.character(categories$categories))
-categories <- categories[!duplicated(categories),]
-write.csv(categories,file = 't3dbcategories.csv')
-
-g <- strsplit(t3db$route_of_exposure, ";")
-route_of_exposure <- data.frame(accession = rep(t3db$accession, lapply(g, length)), route_of_exposure = unlist(g))
-route_of_exposure <- route_of_exposure[!duplicated(route_of_exposure),]
-write.csv(route_of_exposure,file = 't3dbroute_of_exposure.csv')
-```
 
 ## Merge database
 
@@ -272,7 +13,7 @@ write.csv(route_of_exposure,file = 't3dbroute_of_exposure.csv')
 library(readr)
 library(readxl)
 # refmet
-refmet <- read_excel("refmet/refmet_020418.xls")
+refmet <- read_excel("refmet/refmet_112718.xls")
 # drugbank
 drugbank <- read_csv("drugbank/drugbank.csv")
 drugbank$InChIKey <- drugbank$`Standard InChI Key`
@@ -303,5 +44,58 @@ venn(list[c(5,6)],zcolor = hue_pal()(2),cexsn = 1.5,cexil = 1.1)
 dev.off()
 # all overlap
 venn(list,zcolor = hue_pal()(6),cexsn = 1.5,cexil = 1.3)
+library('VennDiagram')
+library('scales')
+
+list <- list(pmdpeak1,camerapeak1,pmdpeak1)
+venn.diagram(list,'venn.png',fill=hue_pal()(3),margin=c(.05,.05,.05,.05),imagetype = 'png')
 ```
 
+```{r}
+library(readr)
+cts_teeth <- read_csv("cts-20181101112732.csv")
+hmdbnew <- read.csv("hmdb/hmdb.csv",stringsAsFactors = F)
+
+sum(cts_teeth$InChIKey %in% hmdbnew$InChIKey)
+
+teeth <- merge(cts_teeth,hmdbnew,by = 'InChIKey')
+tar <- read.csv("../test/classtar.csv",stringsAsFactors = F)
+teeth <- merge(tar,hmdbnew,by.x = 'smilesall',by.y = 'smiles')
+teeth$kegg[!is.na(teeth$kegg)]
+```
+
+```{r}
+data <- read.csv('peaklist.csv')
+group <- stringr::str_replace_all(colnames(data),'\\.[:digit:]','')[-c(1,2)]
+ng <- c(rep('Remote',25),rep('Clean',12),rep('Near',19))
+
+RC <- data[,c(1:37)]
+RCG <- as.factor(ng[c(1:37)])
+
+library(genefilter)
+
+z <- rowttests(as.matrix(RC),fac = RCG)
+
+gct <- cbind.data.frame(m.z = data$mz,rt = data$time, t.score = z$statistic, p.value = z$p.value)
+write.table(gct,file = 'gct.txt',sep = '\t',row.names = F)
+
+NC <- data[,c(38:56,26:36)]
+NCG <- as.factor(ng[c(38:56,26:36)])
+
+library(genefilter)
+
+z <- rowttests(as.matrix(NC),fac = NCG)
+
+nct <- cbind.data.frame(m.z = data$mz,rt = data$time, t.score = z$statistic, p.value = z$p.value)
+write.table(nct,file = 'nct.txt',sep = '\t',row.names = F)
+
+RN <- data[,c(1:25,38:56)]
+RNG <- as.factor(ng[c(1:25,38:56)])
+
+library(genefilter)
+
+z <- rowttests(as.matrix(RN),fac = RNG)
+
+rnt <- cbind.data.frame(m.z = data$mz,rt = data$time, t.score = z$statistic, p.value = z$p.value)
+write.table(rnt,file = 'rnt.txt',sep = '\t',row.names = F)
+```

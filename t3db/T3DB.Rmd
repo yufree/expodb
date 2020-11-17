@@ -1,0 +1,75 @@
+---
+title: "T3DB"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## T3DB
+
+```{r}
+t3db <- read_csv("t3db/t3db.csv")
+t3db$iupac_name <- gsub( "b'", "", as.character(t3db$iupac_name))
+t3db$iupac_name <- gsub( "'$", "", as.character(t3db$iupac_name))
+
+t3db$name <- gsub( "b'", "", as.character(t3db$name))
+t3db$name <- gsub( "'$", "", as.character(t3db$name))
+
+t3db$InChIKey <- gsub( "InChIKey=", "", as.character(t3db$InChIKey))
+write.csv(t3db[,-c(1:5)],file = 't3dbnew.csv')
+
+g <- strsplit(t3db$omim, "\n")
+omim <- data.frame(accession = rep(t3db$accession, lapply(g, length)), omimid = unlist(g))
+omim <- omim[complete.cases(omim),]
+
+g <- strsplit(as.character(omim$omimid), " ")
+omim2 <- data.frame(accession = rep(omim$accession, lapply(g, length)), omimid = unlist(g))
+
+g <- strsplit(as.character(omim2$omimid), '(?<=.{6})', perl=TRUE)
+omim3 <- data.frame(accession = rep(omim2$accession, lapply(g, length)), omimid = unlist(g))
+
+write.csv(omim3,file = 't3dbomim.csv')
+
+t3db$smpdb <- gsub( "^\\[", "", as.character(t3db$smpdb))
+t3db$smpdb <- gsub( "]$", "", as.character(t3db$smpdb))
+t3db$keggmap <- gsub( "^\\[", "", as.character(t3db$keggmap))
+t3db$keggmap <- gsub( "]$", "", as.character(t3db$keggmap))
+t3db$categories <- gsub( "^\\[", "", as.character(t3db$categories))
+t3db$categories <- gsub( "]$", "", as.character(t3db$categories))
+t3db$route_of_exposure <- gsub( "\\(.+\\)", "", as.character(t3db$route_of_exposure))
+t3db$route_of_exposure <- gsub( " \\(.+\\)", "", as.character(t3db$route_of_exposure))
+t3db$route_of_exposure <- gsub( ", ", ";", as.character(t3db$route_of_exposure))
+t3db$route_of_exposure <- gsub("[[:space:]]", "", as.character(t3db$route_of_exposure))
+t3db$route_of_exposure <- gsub("and", "", as.character(t3db$route_of_exposure))
+t3db$route_of_exposure <- gsub("\\.", "", as.character(t3db$route_of_exposure))
+t3db$route_of_exposure <- gsub('"', "", as.character(t3db$route_of_exposure))
+t3db$route_of_exposure <- tolower(as.character(t3db$route_of_exposure))
+
+g <- strsplit(t3db$smpdb, ",")
+smpdb <- data.frame(accession = rep(t3db$accession, lapply(g, length)), smpdb = unlist(g))
+smpdb$smpdb <- gsub( "'", "", as.character(smpdb$smpdb))
+smpdb$smpdb <- gsub( " ", "", as.character(smpdb$smpdb))
+smpdb <- smpdb[!duplicated(smpdb),]
+write.csv(smpdb,file = 't3dbsmpdb.csv')
+
+g <- strsplit(t3db$keggmap, ",")
+keggmap <- data.frame(accession = rep(t3db$accession, lapply(g, length)), keggmap = unlist(g))
+keggmap$keggmap <- gsub( "'", "", as.character(keggmap$keggmap))
+keggmap$keggmap <- gsub( " ", "", as.character(keggmap$keggmap))
+keggmap <- keggmap[!duplicated(keggmap),]
+write.csv(keggmap,file = 't3dbkeggmap.csv')
+
+g <- strsplit(t3db$categories, ",")
+categories <- data.frame(accession = rep(t3db$accession, lapply(g, length)), categories = unlist(g))
+categories$categories <- gsub( "'", "", as.character(categories$categories))
+categories$categories <- gsub( " ", "", as.character(categories$categories))
+categories <- categories[!duplicated(categories),]
+write.csv(categories,file = 't3dbcategories.csv')
+
+g <- strsplit(t3db$route_of_exposure, ";")
+route_of_exposure <- data.frame(accession = rep(t3db$accession, lapply(g, length)), route_of_exposure = unlist(g))
+route_of_exposure <- route_of_exposure[!duplicated(route_of_exposure),]
+write.csv(route_of_exposure,file = 't3dbroute_of_exposure.csv')
+```
