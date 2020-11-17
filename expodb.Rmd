@@ -13,45 +13,98 @@ editor_options:
 library(readr)
 library(readxl)
 # refmet
-refmet <- read_excel("refmet/refmet_112718.xls")
+refmet <- read.csv("refmet/refmet.csv")
 # drugbank
-drugbank <- read_csv("drugbank/drugbank.csv")
-drugbank$InChIKey <- drugbank$`Standard InChI Key`
-drugbanknew <- drugbank[!duplicated(drugbank$InChIKey),]
+# drugbank <- read.csv("drugbank/drugbank.csv")
+# drugbank$InChIKey <- drugbank$`Standard InChI Key`
+# drugbanknew <- drugbank[!duplicated(drugbank$InChIKey),]
 # hmdb
-hmdbnew <- read_csv("hmdb/hmdbnew.csv")
+hmdbnew <- read.csv("hmdb/hmdb.csv")
 # t3db
-t3dbnew <- read_csv("t3db/t3dbnew.csv")
+t3dbnew <- read.csv("t3db/t3dbnew.csv")
 # foodb
-foodb <- read_csv("foodb/compounds.csv")
+foodb <- read.csv("foodb/Compound.csv")
 foodb$InChIKey <- gsub( "InChIKey=", "", as.character(foodb$moldb_inchikey))
-foodbnew <- foodb[!duplicated(foodb$InChIKey),]
-# dsstox
-dsstox <- read_tsv('dsstox/dsstox_20160701.tsv')
-dsstoxnew <- rbind(dsstox,colnames(dsstox))
-colnames(dsstoxnew) <- c('dssid','InChI','InChIKey')
+foodbnew <- foodb[!duplicated(foodb$moldb_smiles),]
+# # dsstox
+# dsstox <- readxl::read_excel('dsstox/DSSToxMS-Ready.xlsx')
+# dsstoxnew <- rbind(dsstox,colnames(dsstox))
+# colnames(dsstoxnew) <- c('dssid','InChI','InChIKey')
 
-list <- list(HMDB=unique(hmdbnew$InChIKey),T3DB = na.omit(unique(t3dbnew$InChIKey)), FooDB = na.omit(foodbnew$InChIKey), DrugBank = na.omit(drugbanknew$InChIKey), RefMet = na.omit(refmet$inchi_key),DSSTox = na.omit(dsstoxnew$InChIKey))
+hmdbdb <- hmdbnew[,c('name','InChIKey','chemical_formula','monisotopic_molecular_weight')]
+hmdbdb$db <- 'hmdb'
+refmetdb <- refmet[,c('refmet_name','inchi_key','formula','exactmass')]
+colnames(refmetdb) <- c('name','InChIKey','chemical_formula','monisotopic_molecular_weight')
+refmetdb$db <- 'refmet'
+
+all <- rbind.data.frame(hmdbdb[!is.na(hmdbdb$monisotopic_molecular_weight),],refmetdb[!is.na(refmetdb$monisotopic_molecular_weight),])
+mass <- Map(enviGCMS::getmass,all$chemical_formula)
+all$mass <- unlist(mass)
+
+hr <- all[,-4]
+write.csv(hr,'hmdbrefmet.csv')
+saveRDS(hr,'hmdbrefmet.RDS')
+
+list <- list(HMDB=unique(hmdbnew$InChIKey),T3DB = na.omit(unique(t3dbnew$InChIKey)), FooDB = na.omit(foodbnew$moldb_smiles),  RefMet = na.omit(refmet$inchi_key))
 
 library(venn)
-png('hd.png',width = 800,height = 800)
-par(mfrow = c(2,3))
-venn(list[c(1,6)],zcolor = hue_pal()(2),cexsn = 1.5,cexil = 1.1)
-venn(list[c(2,6)],zcolor = hue_pal()(2),cexsn = 1.5,cexil = 1.1)
-venn(list[c(3,6)],zcolor = hue_pal()(2),cexsn = 1.5,cexil = 1.1)
-venn(list[c(4,6)],zcolor = hue_pal()(2),cexsn = 1.5,cexil = 1.1)
-venn(list[c(5,6)],zcolor = hue_pal()(2),cexsn = 1.5,cexil = 1.1)
-dev.off()
+library(scales)
 # all overlap
-venn(list,zcolor = hue_pal()(6),cexsn = 1.5,cexil = 1.3)
+venn(list,zcolor = hue_pal()(4),cexsn = 1.5,cexil = 1.3)
 library('VennDiagram')
 library('scales')
-
-list <- list(pmdpeak1,camerapeak1,pmdpeak1)
-venn.diagram(list,'venn.png',fill=hue_pal()(3),margin=c(.05,.05,.05,.05),imagetype = 'png')
+venn.diagram(list,'venn.png',fill=hue_pal()(4),margin=c(.05,.05,.05,.05),imagetype = 'png')
 ```
 
+## Search
+
 ```{r}
+hr <- readRDS('hmdbrefmet.RDS')
+add <- c('Na-H','H','NH4')
+pmd <- unlist(Map(enviGCMS::getmass,add))
+pmdm <- outer(hr$mass,pmd,'+')
+rownames(pmdm) <- hr$name
+mz2 <- c(282.279, 281.113, 227.139, 227.139, 302.207)
+re <- enviGCMS::getalign(pmdm[,1],mz2)
+re2 <- hr[re$xid,]
+re3 <- cbind.data.frame(re[,-1],re2)
+colnames(re3)[1] <- add[1]
+
+mz2 <- c(282.279, 281.113, 227.139, 227.139, 302.207)
+
+getms1anno <- function(pmd,mz,ppm=10){
+    # hr <- get(hr)
+    if(is.character(pmd)){
+        pmds <- unlist(Map(enviGCMS::getmass,pmd))
+    }else{
+        pmds <- pmd
+    }
+    
+    if(length(pmd)>1){
+        pmdmt <- outer(hr$mass,pmds,'+')
+        rownames(pmdmt) <- hr$name
+        li <- list()
+    for(i in 1:length(pmd)){
+        re <- enviGCMS::getalign(pmdmt[,i],mz,ppm = ppm)
+        re2 <- hr[re$xid,]
+        re3 <- cbind.data.frame(re[,-1],re2)
+        colnames(re3)[1] <- pmd[i]
+        li[[i]] <- re3
+        }
+        return(li)
+    }else{
+        pmdmt <- outer(hr$mass,pmds,'+')
+        rownames(pmdmt) <- hr$name
+        re <- enviGCMS::getalign(pmdmt,mz,ppm = ppm)
+        re2 <- hr[re$xid,]
+        re3 <- cbind.data.frame(re[,-1],re2)
+        colnames(re3)[1] <- pmd
+        return(re3)
+    }
+} 
+
+z <- getms1anno(c('Na-H','H','NH4'),c(282.279, 281.113, 227.139, 227.139, 302.207),ppm = 5)
+
 library(readr)
 cts_teeth <- read_csv("cts-20181101112732.csv")
 hmdbnew <- read.csv("hmdb/hmdb.csv",stringsAsFactors = F)
@@ -61,7 +114,6 @@ sum(cts_teeth$InChIKey %in% hmdbnew$InChIKey)
 teeth <- merge(cts_teeth,hmdbnew,by = 'InChIKey')
 tar <- read.csv("../test/classtar.csv",stringsAsFactors = F)
 teeth <- merge(tar,hmdbnew,by.x = 'smilesall',by.y = 'smiles')
-teeth$kegg[!is.na(teeth$kegg)]
 ```
 
 ```{r}
@@ -99,3 +151,10 @@ z <- rowttests(as.matrix(RN),fac = RNG)
 rnt <- cbind.data.frame(m.z = data$mz,rt = data$time, t.score = z$statistic, p.value = z$p.value)
 write.table(rnt,file = 'rnt.txt',sep = '\t',row.names = F)
 ```
+
+## classification
+
+```{r}
+classyfireR::get_classification(InChIKey)
+```
+
