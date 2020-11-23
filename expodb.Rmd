@@ -116,45 +116,15 @@ tar <- read.csv("../test/classtar.csv",stringsAsFactors = F)
 teeth <- merge(tar,hmdbnew,by.x = 'smilesall',by.y = 'smiles')
 ```
 
-```{r}
-data <- read.csv('peaklist.csv')
-group <- stringr::str_replace_all(colnames(data),'\\.[:digit:]','')[-c(1,2)]
-ng <- c(rep('Remote',25),rep('Clean',12),rep('Near',19))
-
-RC <- data[,c(1:37)]
-RCG <- as.factor(ng[c(1:37)])
-
-library(genefilter)
-
-z <- rowttests(as.matrix(RC),fac = RCG)
-
-gct <- cbind.data.frame(m.z = data$mz,rt = data$time, t.score = z$statistic, p.value = z$p.value)
-write.table(gct,file = 'gct.txt',sep = '\t',row.names = F)
-
-NC <- data[,c(38:56,26:36)]
-NCG <- as.factor(ng[c(38:56,26:36)])
-
-library(genefilter)
-
-z <- rowttests(as.matrix(NC),fac = NCG)
-
-nct <- cbind.data.frame(m.z = data$mz,rt = data$time, t.score = z$statistic, p.value = z$p.value)
-write.table(nct,file = 'nct.txt',sep = '\t',row.names = F)
-
-RN <- data[,c(1:25,38:56)]
-RNG <- as.factor(ng[c(1:25,38:56)])
-
-library(genefilter)
-
-z <- rowttests(as.matrix(RN),fac = RNG)
-
-rnt <- cbind.data.frame(m.z = data$mz,rt = data$time, t.score = z$statistic, p.value = z$p.value)
-write.table(rnt,file = 'rnt.txt',sep = '\t',row.names = F)
-```
-
 ## classification
 
 ```{r}
 classyfireR::get_classification(InChIKey)
+```
+
+## disease
+
+```{r}
+dname <- read.csv('hmdb/hmdbdname.csv')
 ```
 
