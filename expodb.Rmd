@@ -127,4 +127,3 @@ classyfireR::get_classification(InChIKey)
 ```{r}
 dname <- read.csv('hmdb/hmdbdname.csv')
 ```
-

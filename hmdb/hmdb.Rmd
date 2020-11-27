@@ -213,15 +213,19 @@ def hmdbpextract(name, file):
 ## HMDB
 
 ```{python}
-hmdbextract('hmdb/hmdb_metabolites.xml','hmdb/hmdb.csv')
-hmdbpextract('hmdb/hmdb_metabolites.xml','hmdb/hmdbpathway.csv')
+hmdbextract('hmdb_metabolites.xml','hmdb.csv')
+hmdbpextract('hmdb_metabolites.xml','hmdbpathway.csv')
 ```
 
 ### parts
 
 ```{python}
+import os
+os.getcwd()
+hmdbextract('serum_metabolites.xml','serumhmdb.csv')
+hmdbpextract('serum_metabolites.xml','serumhmdb.csv')
 hmdbextract('hmdb/urine_metabolites.xml','hmdb/urinehmdb.csv')
-hmdbextract('hmdb/serum_metabolites.xml','hmdb/serumhmdb.csv')
+
 hmdbextract('hmdb/csf_metabolites.xml','hmdb/csfhmdb.csv')
 hmdbextract('hmdb/feces_metabolites.xml','hmdb/feceshmdb.csv')
 hmdbextract('hmdb/saliva_metabolites.xml','hmdb/salivahmdb.csv')
@@ -231,10 +235,7 @@ hmdbextract('hmdb/sweat_metabolites.xml','hmdb/sweathmdb.csv')
 ### data clean
 
 ```{r anno}
-hmdb <- read.csv('hmdb/hmdb.csv')
-hmdb$iupac_name <- gsub( "b'|'$", "", as.character(hmdb$iupac_name))
-hmdb$name <- gsub( "b'|'$", "", as.character(hmdb$name))
-write.csv(hmdb,'hmdb/hmdb.csv')
+hmdb <- read.csv('hmdb.csv')
 hmdb <- read.csv('hmdb/serumhmdb.csv')
 hmdb$iupac_name <- gsub( "b'|'$", "", as.character(hmdb$iupac_name))
 hmdb$name <- gsub( "b'|'$", "", as.character(hmdb$name))
@@ -302,12 +303,12 @@ g <- strsplit(as.character(hmdb2$protein_type), ",")
 protein_type <- data.frame(accession = rep(hmdb$accession, lapply(g, length)), protein_type = unlist(g))
 protein_type$protein_type <- gsub( "'| ", "", as.character(protein_type$protein_type))
 
-write.csv(omim,file = 'hmdb/hmdbomim.csv')
-write.csv(dname,file = 'hmdb/hmdbdname.csv')
-write.csv(protein,file = 'hmdb/hmdbprotein.csv')
-write.csv(smpdb,file = 'hmdb/hmdbsmpdb.csv')
-write.csv(keggmap,file = 'hmdb/hmdbkeggmap.csv')
-write.csv(uniprot,file = 'hmdb/hmdbuniprot.csv')
-write.csv(gene,file = 'hmdb/hmdbgene.csv')
-write.csv(protein_type,file = 'hmdb/hmdbprotein_type.csv')
+write.csv(omim,file = 'hmdbomim.csv')
+write.csv(dname,file = 'hmdbdname.csv')
+write.csv(protein,file = 'hmdbprotein.csv')
+write.csv(smpdb,file = 'hmdbsmpdb.csv')
+write.csv(keggmap,file = 'hmdbkeggmap.csv')
+write.csv(uniprot,file = 'hmdbuniprot.csv')
+write.csv(gene,file = 'hmdbgene.csv')
+write.csv(protein_type,file = 'hmdbprotein_type.csv')
 ```
