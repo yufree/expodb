@@ -5,7 +5,7 @@ output: html_document
 
 ```{r setup, include=F}
 library(reticulate)
-use_python('/usr/local/bin/python3')
+use_python("/opt/homebrew/bin/python3")
 ```
 
 ## Convert the xml files into csv files
@@ -143,6 +143,7 @@ def hmdbextract(name, file):
             del ancestor.getparent()[0]
   del context
   return;
+
 ```
 
 ```{python pathway}
@@ -205,55 +206,25 @@ def hmdbpextract(name, file):
             del ancestor.getparent()[0]
   del context
   return;
-```
 
+```
 
 ## HMDB
 
 ```{python}
-hmdbextract('hmdb_metabolites.xml','hmdb.csv')
-hmdbpextract('hmdb_metabolites.xml','hmdbpathway.csv')
-```
-
-### parts
-
-```{python}
 import os
 os.getcwd()
-hmdbextract('serum_metabolites.xml','serumhmdb.csv')
-hmdbpextract('serum_metabolites.xml','serumhmdb.csv')
-hmdbextract('hmdb/urine_metabolites.xml','hmdb/urinehmdb.csv')
-
-hmdbextract('hmdb/csf_metabolites.xml','hmdb/csfhmdb.csv')
-hmdbextract('hmdb/feces_metabolites.xml','hmdb/feceshmdb.csv')
-hmdbextract('hmdb/saliva_metabolites.xml','hmdb/salivahmdb.csv')
-hmdbextract('hmdb/sweat_metabolites.xml','hmdb/sweathmdb.csv')
+hmdbextract('hmdb_metabolites.xml','hmdb.csv')
+hmdbpextract('hmdb_metabolites.xml','hmdbpathway.csv')
 ```
 
 ### data clean
 
 ```{r anno}
-hmdb <- read.csv('hmdb.csv')
-hmdb <- read.csv('hmdb/serumhmdb.csv')
+hmdb <- read.csv('hmdb/hmdb.csv')
 hmdb$iupac_name <- gsub( "b'|'$", "", as.character(hmdb$iupac_name))
 hmdb$name <- gsub( "b'|'$", "", as.character(hmdb$name))
-write.csv(hmdb,'hmdb/serumhmdb.csv')
-hmdb <- read.csv('hmdb/salivahmdb.csv')
-hmdb$iupac_name <- gsub( "b'|'$", "", as.character(hmdb$iupac_name))
-hmdb$name <- gsub( "b'|'$", "", as.character(hmdb$name))
-write.csv(hmdb,'hmdb/salivahmdb.csv')
-hmdb <- read.csv('hmdb/urinehmdb.csv')
-hmdb$iupac_name <- gsub( "b'|'$", "", as.character(hmdb$iupac_name))
-hmdb$name <- gsub( "b'|'$", "", as.character(hmdb$name))
-write.csv(hmdb,'hmdb/urinehmdb.csv')
-hmdb <- read.csv('hmdb/csfhmdb.csv')
-hmdb$iupac_name <- gsub( "b'|'$", "", as.character(hmdb$iupac_name))
-hmdb$name <- gsub( "b'|'$", "", as.character(hmdb$name))
-write.csv(hmdb,'hmdb/csfhmdb.csv')
-hmdb <- read.csv('hmdb/sweathmdb.csv')
-hmdb$iupac_name <- gsub( "b'|'$", "", as.character(hmdb$iupac_name))
-hmdb$name <- gsub( "b'|'$", "", as.character(hmdb$name))
-write.csv(hmdb,'hmdb/sweathmdb.csv')
+write.csv(hmdb,'hmdb/hmdb.csv')
 ```
 
 ### Pathway

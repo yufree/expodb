@@ -10,14 +10,8 @@ editor_options:
 ## Merge database
 
 ```{r}
-library(readr)
-library(readxl)
 # refmet
 refmet <- read.csv("refmet/refmet.csv")
-# drugbank
-# drugbank <- read.csv("drugbank/drugbank.csv")
-# drugbank$InChIKey <- drugbank$`Standard InChI Key`
-# drugbanknew <- drugbank[!duplicated(drugbank$InChIKey),]
 # hmdb
 hmdbnew <- read.csv("hmdb/hmdb.csv")
 # t3db
@@ -26,34 +20,56 @@ t3dbnew <- read.csv("t3db/t3dbnew.csv")
 foodb <- read.csv("foodb/Compound.csv")
 foodb$InChIKey <- gsub( "InChIKey=", "", as.character(foodb$moldb_inchikey))
 foodbnew <- foodb[!duplicated(foodb$moldb_smiles),]
-# # dsstox
-# dsstox <- readxl::read_excel('dsstox/DSSToxMS-Ready.xlsx')
-# dsstoxnew <- rbind(dsstox,colnames(dsstox))
-# colnames(dsstoxnew) <- c('dssid','InChI','InChIKey')
+# dsstox
+dsstox <- read.csv("dsstox/dsstox.csv")
+# chebi
+chebi <- read.csv("chebi/chebi.csv")
+# drugbank
+# drugbank <- read.csv("drugbank/drugbank.csv")
+# drugbank$InChIKey <- drugbank$`Standard InChI Key`
+# drugbanknew <- drugbank[!duplicated(drugbank$InChIKey),]
+HMDB <- cbind.data.frame(hmdb = hmdbnew$accession,inchikey = hmdbnew$InChIKey)
+HMDB <- HMDB[complete.cases(HMDB),]
+dsstox <- cbind.data.frame(dsstox = dsstox$DTXSID,inchikey = dsstox$inchikey)
+dsstox <- dsstox[complete.cases(dsstox),]
+dsstox <- dsstox[stringi::stri_length(dsstox$inchikey)>0,]
+t3db <- cbind.data.frame(t3db = t3dbnew$accession,inchikey = t3dbnew$InChIKey)
+t3db <- t3db[complete.cases(t3db),]
+foodb <- cbind.data.frame(foodb = foodbnew$public_id,inchikey = foodbnew$moldb_smiles)
+foodb <- foodb[complete.cases(foodb),]
+foodb <- foodb[stringi::stri_length(foodb$inchikey)>0,]
+refmet <- cbind.data.frame(refmet = refmet$refmet_name,inchikey = refmet$inchi_key)
+refmet <- refmet[complete.cases(refmet),]
+refmet <- refmet[stringi::stri_length(refmet$inchikey)>0,]
+chebi <- cbind.data.frame(chebi = chebi$CHEBI_ID,inchikey = chebi$inchikey)
+chebi <- chebi[complete.cases(chebi),]
+chebi <- chebi[stringi::stri_length(chebi$inchikey)>0,]
+all <- list(HMDB, dsstox, t3db, foodb, refmet, chebi)
+alldf <- Reduce(function(x, y) merge(x, y, all=TRUE,by = 'inchikey'), all)
+write.csv(alldf,'alldf.csv')
+all <- list(HMDB = HMDB$inchikey, dsstox = dsstox$inchikey, t3db=t3db$inchikey, foodb=foodb$inchikey, refmet = refmet$inchikey, chebi = chebi$inchikey)
+library(UpSetR)
+upset(fromList(all), order.by = "freq")
+```
 
-hmdbdb <- hmdbnew[,c('name','InChIKey','chemical_formula','monisotopic_molecular_weight')]
-hmdbdb$db <- 'hmdb'
-refmetdb <- refmet[,c('refmet_name','inchi_key','formula','exactmass')]
-colnames(refmetdb) <- c('name','InChIKey','chemical_formula','monisotopic_molecular_weight')
-refmetdb$db <- 'refmet'
+## Search MS2 precursor
 
-all <- rbind.data.frame(hmdbdb[!is.na(hmdbdb$monisotopic_molecular_weight),],refmetdb[!is.na(refmetdb$monisotopic_molecular_weight),])
-mass <- Map(enviGCMS::getmass,all$chemical_formula)
-all$mass <- unlist(mass)
-
-hr <- all[,-4]
-write.csv(hr,'hmdbrefmet.csv')
-saveRDS(hr,'hmdbrefmet.RDS')
-
-list <- list(HMDB=unique(hmdbnew$InChIKey),T3DB = na.omit(unique(t3dbnew$InChIKey)), FooDB = na.omit(foodbnew$moldb_smiles),  RefMet = na.omit(refmet$inchi_key))
-
-library(venn)
-library(scales)
-# all overlap
-venn(list,zcolor = hue_pal()(4),cexsn = 1.5,cexil = 1.3)
-library('VennDiagram')
-library('scales')
-venn.diagram(list,'venn.png',fill=hue_pal()(4),margin=c(.05,.05,.05,.05),imagetype = 'png')
+```{r}
+db <- read.csv('alldf.csv')
+posdb <- read.csv('posdb.csv')
+length(unique(posdb$inchikey))
+negdb <- read.csv('negdb.csv')
+length(unique(negdb$inchikey))
+dbid <- merge(posdb,db,by = 'inchikey')
+inchikey <- paste(dbid$inchikey,round(dbid$precursorMz,3))
+dbid <- dbid[!duplicated(inchikey)&!is.na(dbid$precursorMz)&!is.na(dbid$inchikey),]
+length(unique(dbid$inchikey))
+write.csv(dbid[,-c(2,7)],'allms2pos.csv')
+dbid <- merge(negdb,db,by = 'inchikey')
+inchikey <- paste(dbid$inchikey,round(dbid$precursorMz,3))
+dbid <- dbid[!duplicated(inchikey)&!is.na(dbid$precursorMz)&!is.na(dbid$inchikey),]
+length(unique(dbid$inchikey))
+write.csv(dbid[,-c(2,7)],'allms2neg.csv')
 ```
 
 ## Search
@@ -127,3 +143,59 @@ classyfireR::get_classification(InChIKey)
 ```{r}
 dname <- read.csv('hmdb/hmdbdname.csv')
 ```
+
+## chebi
+
+```{r}
+library(reticulate)
+use_python("/opt/homebrew/bin/python3")
+```
+
+```{python}
+import pandas as pd
+import rdkit
+from rdkit import Chem
+
+chebi = pd.read_table("chebi/chebiId_inchi_3star.tsv")
+inchikey = []
+for i in chebi.InChI:
+    try:
+        mol = Chem.MolFromInchi(i)
+        it = str(Chem.MolToInchiKey(mol))
+    except:
+        it = None
+    inchikey.append(it)
+    
+chebi = chebi.assign(inchikey = inchikey)
+chebi.to_csv('chebi/chebi.csv')
+```
+
+## dsstox
+
+```{r}
+dss <- read.table('dsstox/dsstox_20160701.tsv',header = F)
+colnames(dss) <- c('DTXSID','inchi','inchikey')
+write.csv(dss[,-2],'dsstox/dsstox.csv')
+```
+
+
+## mzCloud
+
+```{python}
+from bs4 import BeautifulSoup
+import time
+inchi = []
+id = []
+for x in range(1,11570):
+webpage = "https://www.mzcloud.org/compound/reference/" + str(x)
+page = requests.get(webpage)
+soup = BeautifulSoup(page.content,"html.parser")
+results = soup.select("body > div > div:nth-child(7) > div > div > table")
+inchi.append(results[0].find_all('td')[3].string)
+id.append(x)
+time.sleep(0.1)
+import pandas as pd
+re = pd.DataFrame({'id': id, 'inchikey': inchi})
+re.to_csv('mzcloud.csv')
+```
+
