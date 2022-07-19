@@ -28,17 +28,17 @@ chebi <- read.csv("chebi/chebi.csv")
 # drugbank <- read.csv("drugbank/drugbank.csv")
 # drugbank$InChIKey <- drugbank$`Standard InChI Key`
 # drugbanknew <- drugbank[!duplicated(drugbank$InChIKey),]
-HMDB <- cbind.data.frame(hmdb = hmdbnew$accession,inchikey = hmdbnew$InChIKey)
+HMDB <- cbind.data.frame(hmdb = hmdbnew$accession,inchikey = hmdbnew$InChIKey,mw = hmdbnew$monisotopic_molecular_weight)
 HMDB <- HMDB[complete.cases(HMDB),]
 dsstox <- cbind.data.frame(dsstox = dsstox$DTXSID,inchikey = dsstox$inchikey)
 dsstox <- dsstox[complete.cases(dsstox),]
 dsstox <- dsstox[stringi::stri_length(dsstox$inchikey)>0,]
-t3db <- cbind.data.frame(t3db = t3dbnew$accession,inchikey = t3dbnew$InChIKey)
+t3db <- cbind.data.frame(t3db = t3dbnew$accession,inchikey = t3dbnew$InChIKey,mw = t3dbnew$monisotopic_molecular_weight)
 t3db <- t3db[complete.cases(t3db),]
-foodb <- cbind.data.frame(foodb = foodbnew$public_id,inchikey = foodbnew$moldb_smiles)
+foodb <- cbind.data.frame(foodb = foodbnew$public_id,inchikey = foodbnew$moldb_smiles,mw = foodbnew$moldb_inchi)
 foodb <- foodb[complete.cases(foodb),]
 foodb <- foodb[stringi::stri_length(foodb$inchikey)>0,]
-refmet <- cbind.data.frame(refmet = refmet$refmet_name,inchikey = refmet$inchi_key)
+refmet <- cbind.data.frame(refmet = refmet$refmet_name,inchikey = refmet$inchi_key,mw = refmet$exactmass)
 refmet <- refmet[complete.cases(refmet),]
 refmet <- refmet[stringi::stri_length(refmet$inchikey)>0,]
 chebi <- cbind.data.frame(chebi = chebi$CHEBI_ID,inchikey = chebi$inchikey)
@@ -75,7 +75,15 @@ write.csv(dbid[,-c(2,7)],'allms2neg.csv')
 ## Search
 
 ```{r}
-hr <- readRDS('hmdbrefmet.RDS')
+db <- read.csv('alldf.csv')
+db$mass <- db$mw.x
+db$mass[is.na(db$mass)] <- db$mw.y[is.na(db$mass)]
+db$mass[is.na(db$mass)] <- db$mw.x.1[is.na(db$mass)]
+db$mass[is.na(db$mass)] <- db$mw.y.1[is.na(db$mass)]
+db2 <- db[!is.na(db$mass),]
+db3 <- db2[,c(2,13,3,5,6,8,10,12)]
+write.csv(db3,'allms1.csv')
+hr <- db3
 add <- c('Na-H','H','NH4')
 pmd <- unlist(Map(enviGCMS::getmass,add))
 pmdm <- outer(hr$mass,pmd,'+')
@@ -121,15 +129,6 @@ getms1anno <- function(pmd,mz,ppm=10){
 
 z <- getms1anno(c('Na-H','H','NH4'),c(282.279, 281.113, 227.139, 227.139, 302.207),ppm = 5)
 
-library(readr)
-cts_teeth <- read_csv("cts-20181101112732.csv")
-hmdbnew <- read.csv("hmdb/hmdb.csv",stringsAsFactors = F)
-
-sum(cts_teeth$InChIKey %in% hmdbnew$InChIKey)
-
-teeth <- merge(cts_teeth,hmdbnew,by = 'InChIKey')
-tar <- read.csv("../test/classtar.csv",stringsAsFactors = F)
-teeth <- merge(tar,hmdbnew,by.x = 'smilesall',by.y = 'smiles')
 ```
 
 ## classification
@@ -169,6 +168,26 @@ for i in chebi.InChI:
 chebi = chebi.assign(inchikey = inchikey)
 chebi.to_csv('chebi/chebi.csv')
 ```
+
+```{r}
+chebi <- read.csv('chebi/chebi.csv')
+dbx <- chebi[,c(2,4)]
+posdb <- read.csv('posdb.csv')
+length(unique(posdb$inchikey))
+negdb <- read.csv('negdb.csv')
+length(unique(negdb$inchikey))
+dbid <- merge(posdb,dbx,by = 'inchikey')
+inchikey <- paste(dbid$inchikey,round(dbid$precursorMz,3))
+dbid <- dbid[!duplicated(inchikey)&!is.na(dbid$precursorMz)&!is.na(dbid$inchikey),]
+length(unique(dbid$inchikey)) #534
+write.csv(dbid[,-2],'chebims2pos.csv')
+dbid <- merge(negdb,dbx,by = 'inchikey')
+inchikey <- paste(dbid$inchikey,round(dbid$precursorMz,3))
+dbid <- dbid[!duplicated(inchikey)&!is.na(dbid$precursorMz)&!is.na(dbid$inchikey),]
+length(unique(dbid$inchikey)) #274
+write.csv(dbid[,-2],'chebims2neg.csv')
+```
+
 
 ## dsstox
 

@@ -73,3 +73,27 @@ route_of_exposure <- data.frame(accession = rep(t3db$accession, lapply(g, length
 route_of_exposure <- route_of_exposure[!duplicated(route_of_exposure),]
 write.csv(route_of_exposure,file = 't3dbroute_of_exposure.csv')
 ```
+
+## exposome
+
+```{r}
+db <- read.csv('t3dbnew.csv')
+db <- db[db$origin == 'Exogenous'|db$origin == 'Endogenous and Exogenous',]
+dbx <- db[,c('accession','InChIKey')]
+colnames(dbx) <- c('accession','inchikey')
+posdb <- read.csv('posdb.csv')
+length(unique(posdb$inchikey))
+negdb <- read.csv('negdb.csv')
+length(unique(negdb$inchikey))
+dbid <- merge(posdb,dbx,by = 'inchikey')
+inchikey <- paste(dbid$inchikey,round(dbid$precursorMz,3))
+dbid <- dbid[!duplicated(inchikey)&!is.na(dbid$precursorMz)&!is.na(dbid$inchikey),]
+length(unique(dbid$inchikey)) #534
+write.csv(dbid[,-2],'t3dbms2pos.csv')
+dbid <- merge(negdb,dbx,by = 'inchikey')
+inchikey <- paste(dbid$inchikey,round(dbid$precursorMz,3))
+dbid <- dbid[!duplicated(inchikey)&!is.na(dbid$precursorMz)&!is.na(dbid$inchikey),]
+length(unique(dbid$inchikey)) #274
+write.csv(dbid[,-2],'t3dbms2neg.csv')
+```
+
