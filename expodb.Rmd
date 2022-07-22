@@ -52,24 +52,61 @@ library(UpSetR)
 upset(fromList(all), order.by = "freq")
 ```
 
-## Search MS2 precursor
+## MSMS
 
 ```{r}
-db <- read.csv('alldf.csv')
-posdb <- read.csv('posdb.csv')
-length(unique(posdb$inchikey))
-negdb <- read.csv('negdb.csv')
-length(unique(negdb$inchikey))
-dbid <- merge(posdb,db,by = 'inchikey')
-inchikey <- paste(dbid$inchikey,round(dbid$precursorMz,3))
-dbid <- dbid[!duplicated(inchikey)&!is.na(dbid$precursorMz)&!is.na(dbid$inchikey),]
-length(unique(dbid$inchikey))
-write.csv(dbid[,-c(2,7)],'allms2pos.csv')
-dbid <- merge(negdb,db,by = 'inchikey')
-inchikey <- paste(dbid$inchikey,round(dbid$precursorMz,3))
-dbid <- dbid[!duplicated(inchikey)&!is.na(dbid$precursorMz)&!is.na(dbid$inchikey),]
-length(unique(dbid$inchikey))
-write.csv(dbid[,-c(2,7)],'allms2neg.csv')
+library(MsBackendMsp)
+library(Spectra)
+library(CompoundDb)
+# MoNA
+monapos <- Spectra::Spectra('msms/MoNA-export-LC-MS-MS_Positive_Mode.msp', source = MsBackendMsp())
+sdata <- spectraData(monapos,columns = c('accession','InChIKey','Name','PrecursorMZ','Formula','ExactMass'))
+monapos1 <- as.data.frame(sdata)[,c(1:4)]
+write.csv(monapos1,'monapos.csv',row.names = F)
+monaneg <- Spectra::Spectra('msms/MoNA-export-LC-MS-MS_Negative_Mode.msp', source = MsBackendMsp())
+sdata <- spectraData(monaneg,columns = c('accession','InChIKey','Name','PrecursorMZ'))
+monaneg1 <- as.data.frame(sdata)
+write.csv(monaneg1,'monaneg.csv',row.names = F)
+# MS-DIAL
+msdialpos <- Spectra::Spectra('msms/MSMS-Public-Pos-VS17.msp', source = MsBackendMsp())
+sdata <- spectraData(msdialpos,columns = c('smiles','inchikey','name','precursorMz'))
+msdialpos1 <- as.data.frame(sdata)
+write.csv(msdialpos1,'msdialpos.csv',,row.names = F)
+# MS-DIAL
+msdialneg <- Spectra::Spectra('msms/MSMS-Public-Neg-VS17.msp', source = MsBackendMsp())
+sdata <- spectraData(msdialneg,columns = c('smiles','inchikey','name','precursorMz'))
+msdialneg1 <- as.data.frame(sdata)
+write.csv(msdialneg1,'msdialneg.csv',,row.names = F)
+# massbank
+mb <- Spectra::Spectra('msms/MassBank_NIST.msp', source = MsBackendMsp())
+sdata <- spectraData(mb,columns = c('accession','InChIKey','Name','PrecursorMZ','Ion_mode'))
+mbpos <- mb[sdata$Ion_mode=='POSITIVE',]
+mbneg <- mb[sdata$Ion_mode=='NEGATIVE',]
+sdatapos <- sdata[sdata$Ion_mode=='POSITIVE',]
+write.csv(sdatapos,'mbpos.csv',row.names = F)
+sdataneg <- sdata[sdata$Ion_mode=='NEGATIVE',]
+write.csv(sdataneg,'mbneg.csv',row.names = F)
+```
+
+```{r}
+pos1 <- read.csv('monapos.csv')
+pos2 <- read.csv('msdialpos.csv')
+pos3 <- read.csv('mbpos.csv')
+colnames(pos1) <- colnames(pos2) <- colnames(pos3)[1:4] <- c('id','inchikey','name','precursormz')
+posall <- rbind.data.frame(pos1[,c(1:4)],pos2[,c(1:4)],pos3[,c(1:4)])
+length(unique(posall$inchikey))
+length(unique(posall$precursormz))
+write.csv(posall,'posdb.csv',row.names = F)
+# 27009
+pos1 <- read.csv('monaneg.csv')
+pos2 <- read.csv('msdialneg.csv')
+pos3 <- read.csv('mbneg.csv')
+colnames(pos1) <- colnames(pos2) <- colnames(pos3)[1:4] <- c('id','inchikey','name','precursormz')
+posall <- rbind.data.frame(pos1[,c(1:4)],pos2[,c(1:4)],pos3[,c(1:4)])
+length(unique(posall$inchikey))
+length(unique(posall$precursormz))
+write.csv(posall,'negdb.csv',row.names = F)
+# 17526
 ```
 
 ## Search
@@ -82,7 +119,7 @@ db$mass[is.na(db$mass)] <- db$mw.x.1[is.na(db$mass)]
 db$mass[is.na(db$mass)] <- db$mw.y.1[is.na(db$mass)]
 db2 <- db[!is.na(db$mass),]
 db3 <- db2[,c(2,13,3,5,6,8,10,12)]
-write.csv(db3,'allms1.csv')
+write.csv(db3,'allms1.csv',row.names = F)
 hr <- db3
 add <- c('Na-H','H','NH4')
 pmd <- unlist(Map(enviGCMS::getmass,add))
@@ -131,6 +168,33 @@ z <- getms1anno(c('Na-H','H','NH4'),c(282.279, 281.113, 227.139, 227.139, 302.20
 
 ```
 
+## Search MS2 precursor
+
+```{r}
+db <- read.csv('alldf.csv')
+db$mass <- db$mw.x
+db$mass[is.na(db$mass)] <- db$mw.y[is.na(db$mass)]
+db$mass[is.na(db$mass)] <- db$mw.x.1[is.na(db$mass)]
+db$mass[is.na(db$mass)] <- db$mw.y.1[is.na(db$mass)]
+db2 <- db[,c(2,13,3,5,6,8,10,12)]
+posdb <- read.csv('posdb.csv')
+length(unique(posdb$inchikey))
+negdb <- read.csv('negdb.csv')
+length(unique(negdb$inchikey))
+dbid <- merge(posdb,db2,by = 'inchikey')
+inchikey <- paste(dbid$inchikey,round(as.numeric(dbid$precursormz,3)))
+dbid <- dbid[!duplicated(inchikey)&!is.na(dbid$precursormz)&!is.na(dbid$inchikey),]
+length(unique(dbid$inchikey))
+write.csv(dbid,'allms2pos.csv')
+# 7381 27% dbinfo
+dbid <- merge(negdb,db2,by = 'inchikey')
+inchikey <- paste(dbid$inchikey,round(as.numeric(dbid$precursormz,3)))
+dbid <- dbid[!duplicated(inchikey)&!is.na(dbid$precursormz)&!is.na(dbid$inchikey),]
+length(unique(dbid$inchikey))
+write.csv(dbid,'allms2neg.csv')
+# 4516 26% dbinfo
+```
+
 ## classification
 
 ```{r}
@@ -177,17 +241,16 @@ length(unique(posdb$inchikey))
 negdb <- read.csv('negdb.csv')
 length(unique(negdb$inchikey))
 dbid <- merge(posdb,dbx,by = 'inchikey')
-inchikey <- paste(dbid$inchikey,round(dbid$precursorMz,3))
-dbid <- dbid[!duplicated(inchikey)&!is.na(dbid$precursorMz)&!is.na(dbid$inchikey),]
-length(unique(dbid$inchikey)) #534
-write.csv(dbid[,-2],'chebims2pos.csv')
+inchikey <- paste(dbid$inchikey,round(as.numeric(dbid$precursormz),3))
+dbid <- dbid[!duplicated(inchikey)&!is.na(dbid$precursormz)&!is.na(dbid$inchikey),]
+length(unique(dbid$inchikey)) #4140
+write.csv(dbid,'chebims2pos.csv')
 dbid <- merge(negdb,dbx,by = 'inchikey')
-inchikey <- paste(dbid$inchikey,round(dbid$precursorMz,3))
-dbid <- dbid[!duplicated(inchikey)&!is.na(dbid$precursorMz)&!is.na(dbid$inchikey),]
-length(unique(dbid$inchikey)) #274
-write.csv(dbid[,-2],'chebims2neg.csv')
+inchikey <- paste(dbid$inchikey,round(as.numeric(dbid$precursormz),3))
+dbid <- dbid[!duplicated(inchikey)&!is.na(dbid$precursormz)&!is.na(dbid$inchikey),]
+length(unique(dbid$inchikey)) #2730
+write.csv(dbid,'chebims2neg.csv')
 ```
-
 
 ## dsstox
 
@@ -197,6 +260,28 @@ colnames(dss) <- c('DTXSID','inchi','inchikey')
 write.csv(dss[,-2],'dsstox/dsstox.csv')
 ```
 
+## T3DB
+
+```{r}
+db <- read.csv('t3db/t3dbnew.csv')
+db <- db[db$origin == 'Exogenous'|db$origin == 'Endogenous and Exogenous',]
+dbx <- db[,c('accession','InChIKey')]
+colnames(dbx) <- c('accession','inchikey')
+posdb <- read.csv('posdb.csv')
+length(unique(posdb$inchikey))
+negdb <- read.csv('negdb.csv')
+length(unique(negdb$inchikey))
+dbid <- merge(posdb,dbx,by = 'inchikey')
+inchikey <- paste(dbid$inchikey,round(as.numeric(dbid$precursormz),3))
+dbid <- dbid[!duplicated(inchikey)&!is.na(dbid$precursormz)&!is.na(dbid$inchikey),]
+length(unique(dbid$inchikey)) #689
+write.csv(dbid,'t3dbms2pos.csv',row.names = F)
+dbid <- merge(negdb,dbx,by = 'inchikey')
+inchikey <- paste(dbid$inchikey,round(as.numeric(dbid$precursormz),3))
+dbid <- dbid[!duplicated(inchikey)&!is.na(dbid$precursormz)&!is.na(dbid$inchikey),]
+length(unique(dbid$inchikey)) #334
+write.csv(dbid,'t3dbms2neg.csv',row.names = F)
+```
 
 ## mzCloud
 
